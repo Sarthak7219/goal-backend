@@ -1,0 +1,687 @@
+*{
+    font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
+}
+
+h1, h2, h3 {
+    font-family: "Playfair Display", serif;
+}
+
+p, h1, h2, h3{
+    margin: 0px;
+    padding: 0px;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    background: var(--white-1, #F2F2F2);
+    color: var(--text-black);
+}
+
+.page-hero{
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+#case_studies-bg{
+    z-index: -1;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('../images/bg1.jpg') lightgray 50% / cover no-repeat;
+}
+
+#gallery-bg{
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('../images/bg2.jpg') lightgray 50% / cover no-repeat;
+    z-index: -1;
+}
+
+#resources-bg{
+    z-index: -1;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('../images/bg3.jpg') lightgray 50% / cover no-repeat;
+}
+
+#about-bg{
+    z-index: -1;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('../images/bg4.jpg') lightgray 50% / cover no-repeat;
+}
+
+#team-bg{
+    z-index: -1;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('../images/bg1.jpg') lightgray 50% / cover no-repeat;
+}
+
+.page-hero img{
+    display: block;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+
+}
+
+.page-head{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    padding-top: 153px;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.page-head h1{
+    font-size: 36px;
+    font-size: 36px;
+}
+
+.page-head p{
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.quick-link-box{
+    position: sticky;
+    top: 35px;
+    display: inline;
+    margin-top: 204.6px;
+    margin-left: 18.75px;
+    min-width: 175px;
+    display: flex;
+    padding: 17.597px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 21.363px;
+    border-left: 2.346px solid var(--text-pink);
+    background: var(--text-white, #FFFFFF);
+}
+
+
+.quicklink{
+    font-family: Poppins;
+    font-size: 14.078px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.quicklink.active{
+    color: var(--text-pink);
+}
+
+.container{
+    display: flex;
+    align-items: flex-start;
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 18px;
+    margin-right: 36.75px;
+    padding-right: 176.6px;  /*(border 1.6px added)*/
+    width: -webkit-fill-available;
+}
+
+section{
+    gap: 45px;
+    display: inline;
+    margin: 0 auto;
+    margin-top: 90px;
+    color: var(--text-black);
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+    align-items: flex-start;
+}
+
+
+.section-head p{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.section-head > div{
+    display: flex;
+    gap: 16.25px;
+    align-items: center;
+}
+
+.line{
+    width: 45px;
+    height: 0.75px;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.section-head h1{
+    font-size: 29.25px;
+    font-weight: 700;
+    margin-top: 12px;
+}
+
+
+
+/*************** Resources CSS ******************/
+
+.resources-page{
+
+    position: relative;
+     top: -86px;
+     
+ }
+.resources-container{
+    display: flex;
+    gap: 18px; 
+}
+
+.resource-box{
+    width: 232.5px;
+    height: 277.5px;
+    background-color: var(--text-white);
+}
+
+.resource-box img{
+    height: 136.5px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.resource-box .detail{
+    width: 100%;
+    padding-left: 11.25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    margin-top: 22.5px;
+}
+
+.resource-box .detail p{
+    color: var(--text-pink);
+    font-size: 12px;
+    font-weight: 600;
+}
+.resource-box .detail h3{
+    font-family: "Playfair Display", sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+}
+.resource-box .detail .date{
+    color: #909090;
+    font-size: 10.5px;
+    font-weight: 500;
+}
+
+
+
+/*************** Gallery CSS ******************/
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.gallery-page{
+
+   position: relative;
+    top: -86px;
+    
+}
+.gallery-detail{
+    margin-bottom: 30px;
+    width: 1024px;
+    display: flex;
+        flex-direction: column;
+        
+        /* text-align: center; */
+        align-items: center;
+        gap: 26.01px;
+        
+
+}
+
+.page-number-wrapper{
+    display: flex;
+    gap: 11.667px;
+    margin: auto;
+}
+
+.page-number-wrapper > div{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--text-pink);
+    color: var(--text-white, #FFF);
+    font-family: "Poppins";
+    font-size: 13.333px;
+    font-weight: 700;
+}
+.gallery-container{
+    margin-top: 60px;
+    width: 1024px;
+    height: 680px;
+    display: grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-auto-rows:220px;
+    gap: 13.16px;
+}
+.right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 18px;
+    margin-right: 36.75px;
+    padding-right: 176.6px;  /*(border 1.6px added)*/
+    width: -webkit-fill-available;
+    margin-top: 90px;
+}
+.gallery-box{
+    background-size: cover;
+}
+#two-col{
+    grid-column: span 2;
+}
+#two-row{
+    grid-row: span 2;
+}
+
+
+
+/*************** About CSS ******************/
+.about-page{
+
+    position: relative;
+     top: -86px;
+     
+ }
+
+#about-sidebox, #case_studies-sidebox{
+    margin-top: 50px;
+}
+
+
+.about h1, .case_studies h1{
+    font-size: 18.75px;
+    font-family: "Playfair Display";
+    font-weight: 700;
+    color: var(--text-black);
+}
+
+.about p, .case_studies p{
+    color: #666;
+    font-family: Poppins;
+    font-size: 13.5px;
+    font-weight: 300;
+}
+
+.right .about, .case_studies{
+    gap: 18.5px;
+    margin-top: 50px;
+    width: 710px;
+}
+
+#about, #case_studies{
+    margin-top: 70px;
+}
+
+#abstract, #case-study-1{
+    margin-top: 0px;
+}
+
+
+
+/*************** Team CSS ******************/
+
+.team{
+    width: 800px;
+    align-items: center;
+}
+
+#team-sidebox{
+    margin-top: 164.6px;
+}
+
+.photo-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 44px;
+    width:fit-content;
+    max-width: 880px;
+}
+
+.member-card{
+    width: 185px;
+    height: 278.777px;
+    position: relative;
+}
+
+.member-img{
+    display: block;
+    width: 100%;
+    height: 153.263px;
+    object-fit: cover;
+    text-align: center;
+}
+
+.member-card-bg{
+    width: 100%;
+    height: 165px;
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+}
+
+.member-details{
+    position: absolute;
+    top: 150px;
+    width: 100%;
+
+}
+
+.member-details h3{
+    color: #000;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.member-details .member-line{
+    width: 31.603px;
+height: 1.436px;
+margin: 0px auto;
+background-color: var(--text-pink);
+}
+
+.member-details .position{
+    color: var(--text-pink, #EC028C);
+    text-align: center;
+    font-family: Poppins;
+    font-size: 11px;
+    font-weight: 400;
+    padding: 0px 19.388px 0px 19.388px;
+}
+
+.member-details .institute{
+    color:  #797979;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    padding: 0px 19.388px 0px 19.388px;
+}
+
+.member-details .social-icons{
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+}
+
+.member-details .position, .member-details .member-line, .member-details .institute, .member-details .social-icons{
+    margin-top: 8.976px;
+}
+
+
+
+/*************** 404 CSS ******************/
+
+.nav_404{
+    height: 87.27px;
+    width: 100%;
+}
+
+.page_404{
+    height: 587.96px;
+    background: #FDEBF6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* workshop-detail */
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.workshop-page{
+   
+    display: flex;
+    flex-direction: column;
+
+    /* text-align: center; */
+    align-items: center;
+    gap: 26.01px;
+   
+    margin-top: 90.25px;
+        margin-bottom: 30px;
+        position: relative;
+        top: -176px;
+    
+}
+.workshop-content{
+    display: flex;
+width: 978px;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 36px;
+margin-top: 300px;
+}
+.workshop-container{
+display: flex;
+width: 978px;
+height: 1052.25px;
+justify-content: center;
+align-items: flex-start;
+gap: 21.75px;
+}
+.left-container{
+width: 642px;
+height: 1052.25px;
+
+}
+.right-container{
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+width: 314.25px;
+height: 988.5px;
+}
+.left-container .image{
+    width: 642px;
+height: 298.5px;
+
+}
+.left-container .about-workshop{
+    display: flex;
+width: 623.25px;
+flex-direction: column;
+margin-top: 37.5px;
+gap: 17.75px;
+}
+.left-container .registration-detail{
+    width: 625.5px;
+height: 221.25px;
+margin-top: 54px;
+}
+.left-container .accomodation{
+width: 623.25px;
+padding-bottom: 1.25px;
+margin-top: 40.5px;
+gap: 17.5px;
+}
+.accomodation p{
+    margin-top: 17.5px;
+}
+.right-container .workshop-detail{
+
+    display: flex;
+    width: 312px;
+    padding: 24.75px 15px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+.right-container .recent-workshops{
+    width: 312px;
+height: 413.25px;
+display: flex;
+    flex-direction: column;
+
+}
+.popular-tags{
+    padding: 18px 18px 37.5px 37.5px;
+    width: 312px;
+height: 192px;
+display: flex;
+    flex-direction: column;
+
+}
+
+.workshop-container h2{
+    color: #000;
+font-family: "Playfair Display";
+font-size: 18.75px;
+font-weight: 700;
+text-transform: capitalize;
+}
+.left-container p{
+    width: 623.25px;
+    color: #666;
+font-family: Montserrat;
+font-size: 13.5px;
+font-weight: 400;
+line-height: 21px; /* 155.556% */
+}
+.left-container h4{
+    color: #EC028C;
+font-family: Poppins;
+font-size: 15px;
+font-weight: 400;
+text-transform: capitalize;
+margin-top: 17.74px;
+}
+.right-container h4{
+color: #EC028C;
+font-family: Montserrat;
+font-size: 15px;
+font-weight: 700;
+text-transform: capitalize;
+
+}
+.right-container div{
+    background: #F7EDF7;
+}
+.workshop-detail{
+    display: flex;
+width: 282px;
+flex-direction: column;
+align-items: flex-start;
+gap: 19.5px;
+}
+.recent-workshops{
+    padding: 32px;
+    width: 261.5px;
+height: 338.25px;
+
+}
+.recent-workshops h2{
+color: #000;
+font-family: "Playfair Display";
+font-size: 18.75px;
+font-style: normal;
+font-weight: 700;
+text-transform: capitalize;
+margin-bottom: 29.75px;
+}
+.workshop-cards{
+display: flex;
+width: 261.5px;
+height: 283.5px;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 18px;
+
+}
+
+.card{
+    display: flex;
+    width: 261.5px;
+    height: 82.5px;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+.card .image{
+    width: 112.5px;
+height: 82.5px;
+
+}
+.card .desc{
+    width: 134px;
+height: 63px;
+
+}
+.desc h5{
+color: #252A34;
+font-family: Montserrat;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: 21px; /* 140% */
+text-transform: capitalize;
+}
+.desc p{
+    color: #252A34;
+    font-family: Montserrat;
+    font-size: 10.5px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15px; /* 142.857% */
+    text-transform: capitalize;
+}
+.registration-detail p{
+   margin-top: 7.5px;
+}
+.popular-tags .tags{
+    margin-top: 22.25px;
+    display: flex;
+    gap: 18px;
+    
+    width: 271px;
+height: 69.75px;
+flex-wrap: wrap;
+}
+.tags .btn{
+display: inline-flex;
+padding: 4.5px 9px;
+justify-content: center;
+align-items: center;
+gap: 7.5px;
+background: #EC028C;
+width: 41px;
+height: 15px;
+}
+.tags .btn a{
+    color: var(--text-white, #FFF);
+font-family: Montserrat;
+font-size: 10.5px;
+font-style: normal;
+font-weight: 400;
+line-height: 15px; /* 142.857% */
+text-transform: capitalize;
+}
+
