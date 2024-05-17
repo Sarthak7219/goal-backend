@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-hero" id="gallery-bg">
+    <div class="page-head">
+        <h1>Photo Gallery</h1>
+        <p><a href="{% url 'home' %}">Home</a> / <a href="">Gallery</a></p>
+    </div>
+    <img src="/static/images/icon.svg" alt="">
+</div>
+
+<div class="container">
+    <div class="quick-link-box" id="gallery-sidebox">
+        <a href="#case1-gal" class="quicklink active">- Case Study-1</a>
+        <a href="#case2-gal" class="quicklink">- Case Study-2</a>
+        <a href="#case3-gal" class="quicklink">- Case Study-3</a>
+        <a href="#case4-gal" class="quicklink">- Case Study-4</a>
+        <a href="#case5-gal" class="quicklink">- Case Study-5</a>
+    </div>
+
+    <div class="right" id="gallery-right">
+        <section class="gallery">
+            <div class="section-head2">
+                <h1>Case Study-1</h1>
+                <div></div>
+            </div>
+
+            <div class="photo-container">
+            </div>
+
+            <div class="page-number-wrapper">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+            </div>
+        </section>
+
+    </div>
+
+</div>
+{% endblock %}
