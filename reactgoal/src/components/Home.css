@@ -5,7 +5,6 @@
     color: #000000;
     }
     .homepage{
-       
         display: flex;
         flex-direction: column;
         gap: 90.25px;
@@ -146,16 +145,13 @@
     }
     /* about css */
     
-    .about-page{
-        display: flex;
-    
+    .homepage .about{
+    display: flex;
     height: 508.5px;
-    
     align-items: center;
     gap: 84.75px;
     justify-content: center;
     margin-top: 90.13px;
-       
     }
     .overview{
         display: flex;

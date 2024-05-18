@@ -92,7 +92,7 @@ function Home() {
           </div>
         </div>
 
-        <div class="about-page">
+        <div class="about">
           <div class="about-image">
             <img src={frame38517Img} alt="" class="img1" />
             <img src={frame38516Img} alt="" class="img2" />
