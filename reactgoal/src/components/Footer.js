@@ -1,5 +1,6 @@
 import React from 'react'
-import "./footer.css";
+import './global.css'
+import './style.css'
 
 import archdeptImg from "../images/archdept.png";
 import apnLogo1Img from "../images/APN Logo-c-v 1 (1).png";

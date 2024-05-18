@@ -1,6 +1,6 @@
 import React from "react";
-import "./Home.css";
-
+import './global.css'
+import './style.css'
 import archdeptImg from "../images/archdept.png";
 import logo7Img from "../images/logo/7.png";
 import logo8Img from "../images/logo/8.png";

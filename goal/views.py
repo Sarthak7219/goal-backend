@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-def home_view(request):
+def index_view(request):
     context = {}
     return render(request, 'index.html', context)
 
@@ -30,6 +30,3 @@ def gallery_view(request):
 def team_view(request):
     context = {}
     return render(request, 'team.html', context)
-
-def index_view(request):
-    return render(request,'index.html')

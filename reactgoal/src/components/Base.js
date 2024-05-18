@@ -1,5 +1,8 @@
 import React from 'react'
+// import "./style.css";
+// import "./global.css";
 import "./Base.css";
+
 import logoImg from "../images/logo (2).png";
 import downArrowImg from "../images/down.png";
 import searchImg from "../images/search.png";
@@ -22,7 +25,7 @@ function Base() {
           </ul>
         </li>
         <li class="dropdown-menu">
-          <a href="/team" class="Team">Team<img src={downArrowImg} /></a>
+          <a href="/team" class="/team">Team<img src={downArrowImg} /></a>
           <ul class="dropdown">
             <li class="case1"><a href="#">Collabarotors</a></li>
             <li class="case2"><a href="#">Research associates</a></li>
