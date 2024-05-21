@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-hero" id="workshop_detail-bg">
+    <div class="page-head">
+        <h1>Workshop</h1>
+        <p><a href="{% url 'home' %}">Home</a> / <a href="">Workshop</a></p>
+    </div>
+    <img src="/static/images/icon.svg" alt="">
+</div>
+
+<div class="workshop-content">
+    <div class="section-head">
+        <div>
+            <p>Workshop {{workshop.id}}</p>
+            <div class="line"></div>
+        </div>
+        <h1>{{workshop.title}}</h1>
+    </div>
+    <div class="workshop-container">
+        <div class="left-container">
+
+            <img src="/static/images/DJI_0069.JPG" alt="" />
+
+            <div class="about-workshop">
+                <h2>About the workshop</h2>
+                <p>
+                    {{workshop.description}}
+                </p>
+            </div>
+            <div class="registration-detail">
+                <h2>Registration</h2>
+                <h4>Target Audience</h4>
+                <p>
+                    The workshop is designed for Masters and PhD students,
+                    researchers and working professionals in the fields of
+                    freshwater ecology, hydrology, climate change, water management,
+                    environmental science, etc.
+                </p>
+                <h4>How to register?</h4>
+                <p>
+                    Registration page (for workshop and poster presentations): LINK
+                    Last Day to register: 25th May 2023 
+                </p>
+            </div>
+            <div class="accomodation">
+                <h2>Accomodation</h2>
+                <p>
+                    Accommodation is available for external participants (those from
+                    outside IIT Roorkee) at IIT Roorkee. Please note that the
+                    availability of accommodation is limited and will be provided on
+                    a first-come, first-served basis. If you have any questions or
+                    concerns regarding accommodation, please contact us at the
+                    provided email address.
+                </p>
+            </div>
+        </div>
+        <div class="right-container">
+            <div class="workshop-detail">
+                <h2>Workshop Details</h2>
+                <div>
+                    <h4>Date:</h4>
+                    <p>{{workshop.date}}</p>
+                </div>
+                <div>
+                    <h4>Coordinator:</h4>
+                    <p>{{workshop.coordinator}}</p>
+                </div>
+                <div>
+                    <h4>Venue:</h4>
+                    <p>{{workshop.venue}}</p>
+                </div>
+            </div>
+            <div class="recent-workshops">
+                <h2>Recent Workshops</h2>
+                <div class="workshop-cards">
+                    <div class="card">
+
+                        <img src="./images/workshops/workshopdetail1.png" alt="" />
+
+                        <div class="desc">
+                            <h5>Charity, Expectati ons vs. Reality</h5>
+                            <p>Homeless</p>
+                        </div>
+                    </div>
+                    <div class="card">
+
+                        <img src="./images/workshops/workshopdetail1.png" alt="" />
+
+                        <div class="desc">
+                            <h5>Charity, Expectati ons vs. Reality</h5>
+                            <p>Homeless</p>
+                        </div>
+                    </div>
+                    <div class="card">
+
+                        <img src="./images/workshops/workshopdetail1.png" alt="" />
+
+                        <div class="desc">
+                            <h5>Charity, Expectati ons vs. Reality</h5>
+                            <p>Homeless</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="popular-tags">
+                <h2>Popular tags</h2>
+                <div class="tags">
+                    <div class="btn">Food</div>
+                    <div class="btn">Food</div>
+                    <div class="btn">Food</div>
+                    <div class="btn">Food</div>
+                    <div class="btn">Food</div>
+                    <div class="btn">Food</div>
+                    <div class="btn">Food</div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

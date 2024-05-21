@@ -56,7 +56,7 @@ ROOT_URLCONF = 'goal.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # 'DIRS': [os.path.join(BASE_DIR,'reactgoal/build')],
+        # 'DIRS': [os.path.join(BASE_DIR,'reactgoal/build')],  #!---> React
         'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -121,17 +121,20 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# # Corrected STATICFILES_DIRS
+# ****** REACT
+# Corrected STATICFILES_DIRS                
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'reactgoal/build/static'),
 # ]
+
+# *****CHANGED
 # Corrected STATICFILES_DIRS
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'public/static')  # Adjust the path accordingly
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Adjust the path accordingly
 MEDIA_URL = '/media/'
 
 

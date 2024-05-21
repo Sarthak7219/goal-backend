@@ -10,7 +10,7 @@
     <img src="/static/images/icon.svg" alt="">
 </div>
 
-<div class="container">
+<div class="container" id="resources-container">
 
     <div class="quick-link-box" id="resources-sidebox">
         <a href="#publications" class="quicklink active">- Publications</a>
@@ -28,38 +28,23 @@
             </div>
 
             <div class="resources-container">
-                <div class="resource-box">
-                    <img src="/static/images/DSC_2080.JPG" alt="here is image">
-                    <div class="detail">
-                        <p>Publisher</p>
-                        <h3>Lorem ipsum dolor sit amet consectetur.</h3>
-                        <p class="date">June27, 2023</p>
+                {% for publication in publications %}
+                <a href="{{publication.link}}">
+                    <div class="resource-box">
+                        <img src="{{publication.image.url}}" alt="here is image">
+                        <div class="detail">
+                            <p>{{publication.publisher}}</p>
+                            <h3>{{publication.title}}</h3>
+                            <p class="date">{{publication.date_of_publishing}}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="resource-box">
-                    <img src="/static/images/DSC_2080.JPG" alt="here is image">
-                    <div class="detail">
-                        <p>Publisher</p>
-                        <h3>Lorem ipsum dolor sit amet consectetur.</h3>
-                        <p class="date">June27, 2023</p>
-                    </div>
-                </div>
-                <div class="resource-box">
-                    <img src="/static/images/DSC_2080.JPG" alt="here is image">
-                    <div class="detail">
-                        <p>Publisher</p>
-                        <h3>Lorem ipsum dolor sit amet consectetur.</h3>
-                        <p class="date">June27, 2023</p>
-                    </div>
-                </div>
-                <div class="resource-box">
-                    <img src="/static/images/DSC_2080.JPG" alt="here is image">
-                    <div class="detail">
-                        <p>Publisher</p>
-                        <h3>Lorem ipsum dolor sit amet consectetur.</h3>
-                        <p class="date">June27, 2023</p>
-                    </div>
-                </div>
+                </a>
+
+                {% empty %}
+                No Publications found!
+
+                {% endfor %}
+
             </div>
         </section>
 
@@ -74,38 +59,22 @@
             </div>
 
             <div class="resources-container">
-                <div class="resource-box">
-                    <img src="/static/images/DSC_2080.JPG" alt="here is image">
-                    <div class="detail">
-                        <p>Publisher</p>
-                        <h3>Lorem ipsum dolor sit amet consectetur.</h3>
-                        <p class="date">June27, 2023</p>
+                {% for training_manual in training_manuals %}
+                <a href="{{training_manual.link}}">
+                    <div class="resource-box">
+                        <img src="{{training_manual.image.url}}" alt="here is image">
+                        <div class="detail">
+                            <p>{{training_manual.publisher}}</p>
+                            <h3>{{training_manual.title}}</h3>
+                            <p class="date">{{training_manual.date_of_publishing}}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="resource-box">
-                    <img src="/static/images/DSC_2080.JPG" alt="here is image">
-                    <div class="detail">
-                        <p>Publisher</p>
-                        <h3>Lorem ipsum dolor sit amet consectetur.</h3>
-                        <p class="date">June27, 2023</p>
-                    </div>
-                </div>
-                <div class="resource-box">
-                    <img src="/static/images/DSC_2080.JPG" alt="here is image">
-                    <div class="detail">
-                        <p>Publisher</p>
-                        <h3>Lorem ipsum dolor sit amet consectetur.</h3>
-                        <p class="date">June27, 2023</p>
-                    </div>
-                </div>
-                <div class="resource-box">
-                    <img src="/static/images/DSC_2080.JPG" alt="here is image">
-                    <div class="detail">
-                        <p>Publisher</p>
-                        <h3>Lorem ipsum dolor sit amet consectetur.</h3>
-                        <p class="date">June27, 2023</p>
-                    </div>
-                </div>
+                </a>
+
+                {% empty %}
+                No Training Manuels found!
+                {% endfor %}
+
             </div>
         </section>
     </div>

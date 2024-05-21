@@ -10,7 +10,7 @@
     <img src="/static/images/icon.svg" alt="">
 </div>
 
-<div class="container">
+<div class="container" id="team-container">
     <div class="quick-link-box" id="team-sidebox">
         <a href="#collaborators" class="quicklink active">- Collaborators</a>
         <a href="#research_associates" class="quicklink">- Research Associates</a>
@@ -24,101 +24,33 @@
             <h2>Collaborators</h2>
 
             <div class="photo-container">
+                {% for team_member in collaborators %}
+                <!-- <a href="{% url 'profile_detail' %}"> -->
                 <div class="member-card">
-                    <img src="/static/images/harshit.jpeg" class="member-img" alt="">
+                    <img src="{{team_member.image.url}}" class="member-img" alt="">
                     <img src="/static/images/Rectangle 5995.png" class="member-card-bg
                         " alt="">
-                    <div class="member-details">
+                    <a href="{% url 'profile_detail' %}">
+                        <div class="member-details">
 
-                        <h3>Dr. Harshit Sosan Lakra</h3>
+                            <h3>{{team_member.name}}</h3>
 
-                        <div class="member-line"></div>
+                            <div class="member-line"></div>
 
-                        <p class="position">Assistant Professor</p>
-                        <p class="institute">Indian Institute of Technology Roorkee, India</p>
+                            <p class="position">{{team_member.position}}</p>
+                            <p class="institute">{{team_member.organisation}}</p>
 
-                        <div class="social-icons">
-                            <a href="#"><i class="fa-regular fa-envelope" style="color: #ec028c;"></i></a>
-                            <a href="#"><i class="fa-brands fa-linkedin" style="color: #ec028c;"></i></a>
+                            <div class="social-icons">
+                                <a href="#"><i class="fa-regular fa-envelope" style="color: #ec028c;"></i></a>
+                                <a href="#"><i class="fa-brands fa-linkedin" style="color: #ec028c;"></i></a>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
-                <div class="member-card">
-                    <img src="/static/images/profile.jpeg" class="member-img" alt="">
-                    <img src="/static/images/Rectangle 5995.png" class="member-card-bg
-                        " alt="">
-                    <div class="member-details">
-
-                        <h3>Name</h3>
-
-                        <div class="member-line"></div>
-
-                        <p class="position">Position</p>
-                        <p class="institute">Institute</p>
-
-                        <div class="social-icons">
-                            <i class="fa-regular fa-envelope" style="color: #ec028c;"></i>
-                            <i class="fa-brands fa-linkedin" style="color: #ec028c;"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="member-card">
-                    <img src="/static/images/profile.jpeg" class="member-img" alt="">
-                    <img src="/static/images/Rectangle 5995.png" class="member-card-bg
-                        " alt="">
-                    <div class="member-details">
-
-                        <h3>Name</h3>
-
-                        <div class="member-line"></div>
-
-                        <p class="position">Position</p>
-                        <p class="institute">Institute</p>
-
-                        <div class="social-icons">
-                            <i class="fa-regular fa-envelope" style="color: #ec028c;"></i>
-                            <i class="fa-brands fa-linkedin" style="color: #ec028c;"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="member-card">
-                    <img src="/static/images/profile.jpeg" class="member-img" alt="">
-                    <img src="/static/images/Rectangle 5995.png" class="member-card-bg
-                        " alt="">
-                    <div class="member-details">
-
-                        <h3>Name</h3>
-
-                        <div class="member-line"></div>
-
-                        <p class="position">Position</p>
-                        <p class="institute">Institute</p>
-
-                        <div class="social-icons">
-                            <i class="fa-regular fa-envelope" style="color: #ec028c;"></i>
-                            <i class="fa-brands fa-linkedin" style="color: #ec028c;"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="member-card">
-                    <img src="/static/images/profile.jpeg" class="member-img" alt="">
-                    <img src="/static/images/Rectangle 5995.png" class="member-card-bg
-                        " alt="">
-                    <div class="member-details">
-
-                        <h3>Name</h3>
-
-                        <div class="member-line"></div>
-
-                        <p class="position">Position</p>
-                        <p class="institute">Institute</p>
-
-                        <div class="social-icons">
-                            <i class="fa-regular fa-envelope" style="color: #ec028c;"></i>
-                            <i class="fa-brands fa-linkedin" style="color: #ec028c;"></i>
-                        </div>
-                    </div>
-                </div>
+                <!-- </a> -->
+                {% empty %}
+                Data not found!
+                {% endfor %}
             </div>
 
 
@@ -128,63 +60,31 @@
             <h2>Research Associates</h2>
 
             <div class="photo-container">
-                <div class="member-card">
-                    <img src="/static/images/harshit.jpeg" class="member-img" alt="">
-                    <img src="/static/images/Rectangle 5995.png" class="member-card-bg
+                {% for team_member in research_associates %}
+                <a href="{% url 'profile_detail' %}">
+                    <div class="member-card">
+                        <img src="{{team_member.image.url}}" class="member-img" alt="">
+                        <img src="/static/images/Rectangle 5995.png" class="member-card-bg
                         " alt="">
-                    <div class="member-details">
+                        <div class="member-details">
 
-                        <h3>Dr. Harshit Sosan Lakra</h3>
+                            <h3>{{team_member.name}}</h3>
 
-                        <div class="member-line"></div>
+                            <div class="member-line"></div>
 
-                        <p class="position">Assistant Professor</p>
-                        <p class="institute">Indian Institute of Technology Roorkee, India</p>
+                            <p class="position">{{team_member.position}}</p>
+                            <p class="institute">{{team_member.organisation}}</p>
 
-                        <div class="social-icons">
-                            <i class="fa-regular fa-envelope" style="color: #ec028c;"></i>
-                            <i class="fa-brands fa-linkedin" style="color: #ec028c;"></i>
+                            <div class="social-icons">
+                                <a href="#"><i class="fa-regular fa-envelope" style="color: #ec028c;"></i></a>
+                                <a href="#"><i class="fa-brands fa-linkedin" style="color: #ec028c;"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="member-card">
-                    <img src="/static/images/profile.jpeg" class="member-img" alt="">
-                    <img src="/static/images/Rectangle 5995.png" class="member-card-bg
-                        " alt="">
-                    <div class="member-details">
-
-                        <h3>Name</h3>
-
-                        <div class="member-line"></div>
-
-                        <p class="position">Position</p>
-                        <p class="institute">Institute</p>
-
-                        <div class="social-icons">
-                            <i class="fa-regular fa-envelope" style="color: #ec028c;"></i>
-                            <i class="fa-brands fa-linkedin" style="color: #ec028c;"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="member-card">
-                    <img src="/static/images/profile.jpeg" class="member-img" alt="">
-                    <img src="/static/images/Rectangle 5995.png" class="member-card-bg
-                        " alt="">
-                    <div class="member-details">
-
-                        <h3>Name</h3>
-
-                        <div class="member-line"></div>
-
-                        <p class="position">Position</p>
-                        <p class="institute">Institute</p>
-
-                        <div class="social-icons">
-                            <i class="fa-regular fa-envelope" style="color: #ec028c;"></i>
-                            <i class="fa-brands fa-linkedin" style="color: #ec028c;"></i>
-                        </div>
-                    </div>
-                </div>
+                </a>
+                {% empty %}
+                Data not found!
+                {% endfor %}
             </div>
 
 
@@ -194,63 +94,31 @@
             <h2>Community Trainers</h2>
 
             <div class="photo-container">
-                <div class="member-card">
-                    <img src="/static/images/harshit.jpeg" class="member-img" alt="">
-                    <img src="/static/images/Rectangle 5995.png" class="member-card-bg
+                {% for team_member in community_trainers %}
+                <a href="{% url 'profile_detail' %}">
+                    <div class="member-card">
+                        <img src="{{team_member.image.url}}" class="member-img" alt="">
+                        <img src="/static/images/Rectangle 5995.png" class="member-card-bg
                         " alt="">
-                    <div class="member-details">
+                        <div class="member-details">
 
-                        <h3>Dr. Harshit Sosan Lakra</h3>
+                            <h3>{{team_member.name}}</h3>
 
-                        <div class="member-line"></div>
+                            <div class="member-line"></div>
 
-                        <p class="position">Assistant Professor</p>
-                        <p class="institute">Indian Institute of Technology Roorkee, India</p>
+                            <p class="position">{{team_member.position}}</p>
+                            <p class="institute">{{team_member.organisation}}</p>
 
-                        <div class="social-icons">
-                            <a href="#"><i class="fa-regular fa-envelope" style="color: #ec028c;"></i></a>
-                            <a href="#"><i class="fa-brands fa-linkedin" style="color: #ec028c;"></i></a>
+                            <div class="social-icons">
+                                <a href="#"><i class="fa-regular fa-envelope" style="color: #ec028c;"></i></a>
+                                <a href="#"><i class="fa-brands fa-linkedin" style="color: #ec028c;"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="member-card">
-                    <img src="/static/images/profile.jpeg" class="member-img" alt="">
-                    <img src="/static/images/Rectangle 5995.png" class="member-card-bg
-                        " alt="">
-                    <div class="member-details">
-
-                        <h3>Name</h3>
-
-                        <div class="member-line"></div>
-
-                        <p class="position">Position</p>
-                        <p class="institute">Institute</p>
-
-                        <div class="social-icons">
-                            <i class="fa-regular fa-envelope" style="color: #ec028c;"></i>
-                            <i class="fa-brands fa-linkedin" style="color: #ec028c;"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="member-card">
-                    <img src="/static/images/profile.jpeg" class="member-img" alt="">
-                    <img src="/static/images/Rectangle 5995.png" class="member-card-bg
-                        " alt="">
-                    <div class="member-details">
-
-                        <h3>Name</h3>
-
-                        <div class="member-line"></div>
-
-                        <p class="position">Position</p>
-                        <p class="institute">Institute</p>
-
-                        <div class="social-icons">
-                            <i class="fa-regular fa-envelope" style="color: #ec028c;"></i>
-                            <i class="fa-brands fa-linkedin" style="color: #ec028c;"></i>
-                        </div>
-                    </div>
-                </div>
+                </a>
+                {% empty %}
+                Data not found!
+                {% endfor %}
             </div>
 
 
@@ -260,63 +128,31 @@
             <h2>Interns</h2>
 
             <div class="photo-container">
-                <div class="member-card">
-                    <img src="/static/images/harshit.jpeg" class="member-img" alt="">
-                    <img src="/static/images/Rectangle 5995.png" class="member-card-bg
+                {% for team_member in interns %}
+                <a href="{% url 'profile_detail' %}">
+                    <div class="member-card">
+                        <img src="{{team_member.image.url}}" class="member-img" alt="">
+                        <img src="/static/images/Rectangle 5995.png" class="member-card-bg
                         " alt="">
-                    <div class="member-details">
+                        <div class="member-details">
 
-                        <h3>Dr. Harshit Sosan Lakra</h3>
+                            <h3>{{team_member.name}}</h3>
 
-                        <div class="member-line"></div>
+                            <div class="member-line"></div>
 
-                        <p class="position">Assistant Professor</p>
-                        <p class="institute">Indian Institute of Technology Roorkee, India</p>
+                            <p class="position">{{team_member.position}}</p>
+                            <p class="institute">{{team_member.organisation}}</p>
 
-                        <div class="social-icons">
-                            <i class="fa-regular fa-envelope" style="color: #ec028c;"></i>
-                            <i class="fa-brands fa-linkedin" style="color: #ec028c;"></i>
+                            <div class="social-icons">
+                                <a href="#"><i class="fa-regular fa-envelope" style="color: #ec028c;"></i></a>
+                                <a href="#"><i class="fa-brands fa-linkedin" style="color: #ec028c;"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="member-card">
-                    <img src="/static/images/profile.jpeg" class="member-img" alt="">
-                    <img src="/static/images/Rectangle 5995.png" class="member-card-bg
-                        " alt="">
-                    <div class="member-details">
-
-                        <h3>Name</h3>
-
-                        <div class="member-line"></div>
-
-                        <p class="position">Position</p>
-                        <p class="institute">Institute</p>
-
-                        <div class="social-icons">
-                            <i class="fa-regular fa-envelope" style="color: #ec028c;"></i>
-                            <i class="fa-brands fa-linkedin" style="color: #ec028c;"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="member-card">
-                    <img src="/static/images/profile.jpeg" class="member-img" alt="">
-                    <img src="/static/images/Rectangle 5995.png" class="member-card-bg
-                        " alt="">
-                    <div class="member-details">
-
-                        <h3>Name</h3>
-
-                        <div class="member-line"></div>
-
-                        <p class="position">Position</p>
-                        <p class="institute">Institute</p>
-
-                        <div class="social-icons">
-                            <i class="fa-regular fa-envelope" style="color: #ec028c;"></i>
-                            <i class="fa-brands fa-linkedin" style="color: #ec028c;"></i>
-                        </div>
-                    </div>
-                </div>
+                </a>
+                {% empty %}
+                Data not found!
+                {% endfor %}
             </div>
 
 
@@ -326,63 +162,31 @@
             <h2>Students</h2>
 
             <div class="photo-container">
-                <div class="member-card">
-                    <img src="/static/images/harshit.jpeg" class="member-img" alt="">
-                    <img src="/static/images/Rectangle 5995.png" class="member-card-bg
+                {% for team_member in students %}
+                <a href="{% url 'profile_detail' %}">
+                    <div class="member-card">
+                        <img src="{{team_member.image.url}}" class="member-img" alt="">
+                        <img src="/static/images/Rectangle 5995.png" class="member-card-bg
                         " alt="">
-                    <div class="member-details">
+                        <div class="member-details">
 
-                        <h3>Dr. Harshit Sosan Lakra</h3>
+                            <h3>{{team_member.name}}</h3>
 
-                        <div class="member-line"></div>
+                            <div class="member-line"></div>
 
-                        <p class="position">Assistant Professor</p>
-                        <p class="institute">Indian Institute of Technology Roorkee, India</p>
+                            <p class="position">{{team_member.position}}</p>
+                            <p class="institute">{{team_member.organisation}}</p>
 
-                        <div class="social-icons">
-                            <i class="fa-regular fa-envelope" style="color: #ec028c;"></i>
-                            <i class="fa-brands fa-linkedin" style="color: #ec028c;"></i>
+                            <div class="social-icons">
+                                <a href="#"><i class="fa-regular fa-envelope" style="color: #ec028c;"></i></a>
+                                <a href="#"><i class="fa-brands fa-linkedin" style="color: #ec028c;"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="member-card">
-                    <img src="/static/images/profile.jpeg" class="member-img" alt="">
-                    <img src="/static/images/Rectangle 5995.png" class="member-card-bg
-                        " alt="">
-                    <div class="member-details">
-
-                        <h3>Name</h3>
-
-                        <div class="member-line"></div>
-
-                        <p class="position">Position</p>
-                        <p class="institute">Institute</p>
-
-                        <div class="social-icons">
-                            <i class="fa-regular fa-envelope" style="color: #ec028c;"></i>
-                            <i class="fa-brands fa-linkedin" style="color: #ec028c;"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="member-card">
-                    <img src="/static/images/profile.jpeg" class="member-img" alt="">
-                    <img src="/static/images/Rectangle 5995.png" class="member-card-bg
-                        " alt="">
-                    <div class="member-details">
-
-                        <h3>Name</h3>
-
-                        <div class="member-line"></div>
-
-                        <p class="position">Position</p>
-                        <p class="institute">Institute</p>
-
-                        <div class="social-icons">
-                            <i class="fa-regular fa-envelope" style="color: #ec028c;"></i>
-                            <i class="fa-brands fa-linkedin" style="color: #ec028c;"></i>
-                        </div>
-                    </div>
-                </div>
+                </a>
+                {% empty %}
+                Data not found!
+                {% endfor %}
             </div>
 
 

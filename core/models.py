@@ -47,6 +47,51 @@ class Workshop(models.Model):
 
 # class Image(models.Model):
 #     case_study = models.ForeignKey(Case_study, on_delete=models.CASCADE, null=True, blank=True, related_name='workshop')
+
+
+RESOURCES_CHOICES = (
+    ('publication', 'Publication'),
+    ('training_manual', 'Training_Manual')
+)
+
+class Resources(models.Model):
+    title = models.CharField(max_length=25)
+    category = models.CharField(max_length=30, choices=RESOURCES_CHOICES, default='publication')
+    date_of_publishing = models.DateField()
+    publisher = models.CharField(max_length=25)
+    image = models.ImageField(upload_to='images/resource/')
+    link = models.URLField(max_length=250, null=True, default='#')
+    
+
+    def __str__(self): 
+         return self.category
+    
+
+
+TEAM_MEMBER_CHOICES = (
+    ('collaborator', 'Collaborator'),
+    ('research_associate', 'Research_Associate'),
+    ('community_trainer', 'Community_Trainer'),
+    ('intern', 'Intern'),
+    ('student', 'Students'),
+)
+
+class TeamMember(models.Model):
+    name = models.CharField(max_length=50)
+    category = models.CharField(max_length=30, choices=TEAM_MEMBER_CHOICES)
+    position = models.CharField(max_length=40)
+    organisation = models.CharField(max_length=100)
+    country = models.CharField(max_length=20)
+    email = models.EmailField(null=True)
+    contact = models.CharField(max_length=100)
+    description = models.TextField()
+    image = models.ImageField(upload_to='images/team_member/')
+
+    
+    def __str__(self): 
+         return self.name + " ("+self.category+")"
+
+
     
 
 

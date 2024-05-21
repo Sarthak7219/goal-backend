@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Case_study, Workshop
+from django.http import HttpResponse
+from .models import *
 
 def home_view(request):
     context = {}
@@ -19,12 +20,31 @@ def case_studies_view(request):
     return render(request, 'case_studies.html', context)
 
 def resources_view(request):
-    context = {}
+    publications = Resources.objects.filter(category = 'publication')
+    training_manuals = Resources.objects.filter(category = 'training_manual')
+
+    context = {
+        'publications':publications,
+        'training_manuals':training_manuals,
+    }
     return render(request, 'resources.html', context)
 
 
 def team_view(request):
-    context = {}
+    
+    collaborators = TeamMember.objects.filter(category = 'collaborator')
+    research_associates = TeamMember.objects.filter(category = 'research_associate')
+    community_trainers = TeamMember.objects.filter(category = 'community_trainer')
+    interns = TeamMember.objects.filter(category = 'intern')
+    students = TeamMember.objects.filter(category = 'student')
+
+    context = {
+        'collaborators':collaborators,
+        'research_associates':research_associates,
+        'community_trainers':community_trainers,
+        'interns':interns,
+        'students':students,
+    }
     return render(request, 'team.html', context)
 
 def gallery_view(request):
@@ -32,10 +52,25 @@ def gallery_view(request):
     return render(request, 'gallery.html', context)
 
 
-def workshop_detail_view(request, workshop_id):
-    context = {
-        'workshop_id':workshop_id
-    }
+def workshop_detail_view(request):
+
+    context = {}
+    if request.method == 'GET':
+        workshop_id = request.GET.get('workshop_id')
+
+        try:
+            workshop = Workshop.objects.get(id = workshop_id)
+            context['workshop']=workshop
+        except:
+            return HttpResponse('Workshop not found!')
+   
     return render(request, 'workshop_detail.html', context)
+
+
+def profile_detail_view(request):
+    context = {
+        # 'workshop_id':workshop_id
+    }
+    return render(request, 'profile_detail.html', context)
 
 
