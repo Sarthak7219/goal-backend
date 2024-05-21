@@ -124,7 +124,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # ****** REACT
 # Corrected STATICFILES_DIRS                
 # STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'reactgoal/build/static'),
+#     os.path.join(BASE_DIR, 'static'),
 # ]
 
 # *****CHANGED

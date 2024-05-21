@@ -1380,13 +1380,13 @@ text-transform: capitalize;
     margin-top: 90.25px;
 
 }
+
 .workshop-content-home{
     width: 972px;
-height: 625.989px;
-
-
-
+    height: 625.989px;
 }
+
+
 head{
     display:flex;
     flex-direction: column;

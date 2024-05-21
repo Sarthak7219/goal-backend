@@ -6,11 +6,12 @@ import './style.css'
 function About() {
   return (
     <div class="about-page"> <div class="page-hero" id="about-bg">
+<div class="page-hero" id="about-bg">
     <div class="page-head">
         <h1>About The Project</h1>
-        <p><a href="">Home</a> / <a href="">About</a></p>
+        <p><a href="{% url 'home' %}">Home</a> / <a href="">About</a></p>
     </div>
-    <img src="./images/icon.svg" alt=""/>
+    <img src={iconImg} alt=""/>
 </div>
 
 <div class="container" id="about">
@@ -82,7 +83,9 @@ function About() {
         </section>
     </div>
 
-</div></div>
+</div>
+</div>
+</div>
   )
 }
 

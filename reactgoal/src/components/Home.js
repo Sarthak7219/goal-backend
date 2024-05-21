@@ -1,6 +1,6 @@
 import React from "react";
-import "./Home.css";
-
+import './global.css'
+import './style.css'
 import archdeptImg from "../images/archdept.png";
 import logo7Img from "../images/logo/7.png";
 import logo8Img from "../images/logo/8.png";
@@ -92,7 +92,7 @@ function Home() {
           </div>
         </div>
 
-        <div class="about-page">
+        <div class="about">
           <div class="about-image">
             <img src={frame38517Img} alt="" class="img1" />
             <img src={frame38516Img} alt="" class="img2" />
