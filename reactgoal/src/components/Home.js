@@ -1,6 +1,6 @@
 import React from "react";
-import './global.css'
-import './style.css'
+import "./global.css";
+import "./style.css";
 import archdeptImg from "../images/archdept.png";
 import logo7Img from "../images/logo/7.png";
 import logo8Img from "../images/logo/8.png";
@@ -61,22 +61,20 @@ function Home() {
             <source src={videoSrc} type="video/mp4" />
           </video>
           <div class="header-content">
-          <div class="goal">GoAL</div>
-          <div class="goal-desc">
-            <p class="full-form">
-              Gender-Orientated Adaptive Transformation cross-Learning
-            </p>
-            <p class="funder">An APN Funded Project | IIT Roorkee</p>
-            <button class="btn">
-              <div class="btn-text">
-                <p>Explore</p>
-              </div>
-            </button>
-          </div>
+            <div class="goal">GoAL</div>
+            <div class="goal-desc">
+              <p class="full-form">
+                Gender-Orientated Adaptive Transformation cross-Learning
+              </p>
+              <p class="funder">An APN Funded Project | IIT Roorkee</p>
+              <button class="btn">
+                <div class="btn-text">
+                  <p>Explore</p>
+                </div>
+              </button>
+            </div>
           </div>
 
-
-          
           <div class="collabs">
             <h5>Collaborating Institutes</h5>
 
@@ -179,135 +177,135 @@ function Home() {
           </div>
         </div>
         <div class="workshop-page">
-        <div class="workshop-content">
-          <div class="head">
-            <div class="headline">
-              <h3>Recent workshops</h3>
-              <img src="./images/Line 172.png" alt="" />
-            </div>
+          <div class="workshop-content">
+            <div class="head">
+              <div class="headline">
+                <h3>Recent workshops</h3>
+                <img src="./images/Line 172.png" alt="" />
+              </div>
 
-            <h2>We conduct regular workshops</h2>
-          </div>
-          <div class="workshop-body">
-            <div class="left-right-icons">
-              <img src="./images/leftarrow.png" alt="" />
-              <img src="./images/rightarrow.png" alt="" />
+              <h2>We conduct regular workshops</h2>
             </div>
-            <div class="workshops">
-              <ul class="workshop-list">
-                <li class="workshop">
-                  <div class="worshop-detail">
-                    <div class="detail">
-                      <h2>
-                        Adaptive Transformations for Climate Change and Disaster
-                        Risk Reduction Workshop
-                      </h2>
-                      <div class="venue">
-                        <p>
-                          Department of Architecture and Planning, IIT Roorkee
-                        </p>
-                        <p>10th February, 2024</p>
+            <div class="workshop-body">
+              <div class="left-right-icons">
+                <img src="./images/leftarrow.png" alt="" />
+                <img src="./images/rightarrow.png" alt="" />
+              </div>
+              <div class="workshops">
+                <ul class="workshop-list">
+                  <li class="workshop">
+                    <div class="worshop-detail-home">
+                      <div class="detail">
+                        <h2>
+                          Adaptive Transformations for Climate Change and
+                          Disaster Risk Reduction Workshop
+                        </h2>
+                        <div class="venue">
+                          <p>
+                            Department of Architecture and Planning, IIT Roorkee
+                          </p>
+                          <p>10th February, 2024</p>
+                        </div>
+                        <button class="btn">View Details</button>
                       </div>
-                      <button class="btn">View Details</button>
                     </div>
-                  </div>
-                </li>
-                <li class="workshop">
-                  <div class="worshop-detail">
-                    <div class="detail">
-                      <h2>
-                        Adaptive Transformations for Climate Change and Disaster
-                        Risk Reduction Workshop
-                      </h2>
-                      <div class="venue">
-                        <p>
-                          Department of Architecture and Planning, IIT Roorkee
-                        </p>
-                        <p>10th February, 2024</p>
+                  </li>
+                  <li class="workshop">
+                    <div class="worshop-detail-home">
+                      <div class="detail">
+                        <h2>
+                          Adaptive Transformations for Climate Change and
+                          Disaster Risk Reduction Workshop
+                        </h2>
+                        <div class="venue">
+                          <p>
+                            Department of Architecture and Planning, IIT Roorkee
+                          </p>
+                          <p>10th February, 2024</p>
+                        </div>
+                        <button class="btn">View Details</button>
                       </div>
-                      <button class="btn">View Details</button>
                     </div>
-                  </div>
-                </li>
-                <li class="workshop">
-                  <div class="worshop-detail">
-                    <div class="detail">
-                      <h2>
-                        Adaptive Transformations for Climate Change and Disaster
-                        Risk Reduction Workshop
-                      </h2>
-                      <div class="venue">
-                        <p>
-                          Department of Architecture and Planning, IIT Roorkee
-                        </p>
-                        <p>10th February, 2024</p>
+                  </li>
+                  <li class="workshop">
+                    <div class="worshop-detail-home">
+                      <div class="detail">
+                        <h2>
+                          Adaptive Transformations for Climate Change and
+                          Disaster Risk Reduction Workshop
+                        </h2>
+                        <div class="venue">
+                          <p>
+                            Department of Architecture and Planning, IIT Roorkee
+                          </p>
+                          <p>10th February, 2024</p>
+                        </div>
+                        <button class="btn">View Details</button>
                       </div>
-                      <button class="btn">View Details</button>
                     </div>
-                  </div>
-                </li>
-              </ul>
-              <ul class="workshop-list">
-                <li class="workshop">
-                  <div class="worshop-detail">
-                    <div class="detail">
-                      <h2>
-                        Adaptive Transformations for Climate Change and Disaster
-                        Risk Reduction Workshop
-                      </h2>
-                      <div class="venue">
-                        <p>
-                          Department of Architecture and Planning, IIT Roorkee
-                        </p>
-                        <p>10th February, 2024</p>
+                  </li>
+                </ul>
+                <ul class="workshop-list">
+                  <li class="workshop">
+                    <div class="worshop-detail-home">
+                      <div class="detail">
+                        <h2>
+                          Adaptive Transformations for Climate Change and
+                          Disaster Risk Reduction Workshop
+                        </h2>
+                        <div class="venue">
+                          <p>
+                            Department of Architecture and Planning, IIT Roorkee
+                          </p>
+                          <p>10th February, 2024</p>
+                        </div>
+                        <button class="btn">View Details</button>
                       </div>
-                      <button class="btn">View Details</button>
                     </div>
-                  </div>
-                </li>
-                <li class="workshop">
-                  <div class="worshop-detail">
-                    <div class="detail">
-                      <h2>
-                        Adaptive Transformations for Climate Change and Disaster
-                        Risk Reduction Workshop
-                      </h2>
-                      <div class="venue">
-                        <p>
-                          Department of Architecture and Planning, IIT Roorkee
-                        </p>
-                        <p>10th February, 2024</p>
+                  </li>
+                  <li class="workshop">
+                    <div class="worshop-detail-home">
+                      <div class="detail">
+                        <h2>
+                          Adaptive Transformations for Climate Change and
+                          Disaster Risk Reduction Workshop
+                        </h2>
+                        <div class="venue">
+                          <p>
+                            Department of Architecture and Planning, IIT Roorkee
+                          </p>
+                          <p>10th February, 2024</p>
+                        </div>
+                        <button class="btn">View Details</button>
                       </div>
-                      <button class="btn">View Details</button>
                     </div>
-                  </div>
-                </li>
-                <li class="workshop">
-                  <div class="worshop-detail">
-                    <div class="detail">
-                      <h2>
-                        Adaptive Transformations for Climate Change and Disaster
-                        Risk Reduction Workshop
-                      </h2>
-                      <div class="venue">
-                        <p>
-                          Department of Architecture and Planning, IIT Roorkee
-                        </p>
-                        <p>10th February, 2024</p>
+                  </li>
+                  <li class="workshop">
+                    <div class="worshop-detail-home">
+                      <div class="detail">
+                        <h2>
+                          Adaptive Transformations for Climate Change and
+                          Disaster Risk Reduction Workshop
+                        </h2>
+                        <div class="venue">
+                          <p>
+                            Department of Architecture and Planning, IIT Roorkee
+                          </p>
+                          <p>10th February, 2024</p>
+                        </div>
+                        <button class="btn">View Details</button>
                       </div>
-                      <button class="btn">View Details</button>
                     </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="dots">
-              <img src="./images/Ellipse 377 (1).png" alt="" />
-              <img src="./images/Ellipse 379 (1).png" alt="" />
+                  </li>
+                </ul>
+              </div>
+              <div class="dots">
+                <img src="./images/Ellipse 377 (1).png" alt="" />
+                <img src="./images/Ellipse 379 (1).png" alt="" />
+              </div>
             </div>
           </div>
         </div>
-      </div>
         <div class="objective-page">
           <img src={designleftImg} alt="" class="designleft" />
           <div class="objective-head">
@@ -342,7 +340,7 @@ function Home() {
           <img src={designrightImg} alt="" class="designright" />
         </div>
 
-        <div class="gallery">
+        <div class="gallery-home">
           <h2>Our Gallery</h2>
           <div class="images">
             <div class="row1">
@@ -351,11 +349,7 @@ function Home() {
                   <img src={gallery1Img} alt="" />
                 </li>
                 <li>
-                  <img
-                    src={gallery2Img}
-                    alt=""
-                    style={{ height: "225px", width: "282px" }}
-                  />
+                  <img src={gallery2Img} alt="" />
                 </li>
                 <li>
                   <img src={gallery3Img} alt="" />
