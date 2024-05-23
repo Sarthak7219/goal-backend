@@ -1,14 +1,14 @@
 import React from 'react'
-// import "./style.css";
-// import "./global.css";
-import "./Base.css";
+import "./style.css";
+import "./global.css";
+
 
 import logoImg from "../images/logo (2).png";
 import downArrowImg from "../images/down.png";
 import searchImg from "../images/search.png";
 function Base() {
   return (
-    <div><div class="navbar">
+    <div class="navbar">
     <div class="goal-logo"><a href="/"><img src={logoImg} alt="image" /></a></div>
     <div class="navlist">
       <ul class="lists">
@@ -16,8 +16,8 @@ function Base() {
         <li class="worshops"><a href="/workshop">Workshops</a></li>
 
         <li class="dropdown-menu">
-          <a href="/research" class="Reasearch"
-            >Reasearch<img src={downArrowImg}
+          <a href="/resources" class="Resources"
+            >Resources<img src={downArrowImg}
           /></a>
           <ul class="dropdown">
             <li class="case1"><a href="#">Publications</a></li>
@@ -61,7 +61,7 @@ function Base() {
       </li>
       <img src={searchImg} alt="" />
     </div>
-  </div></div>
+  </div>
   )
 }
 

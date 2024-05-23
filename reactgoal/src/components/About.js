@@ -5,7 +5,7 @@ import './global.css'
 import './style.css'
 function About() {
   return (
-    <div class="about-page"> <div class="page-hero" id="about-bg">
+    <div class="About-page"> 
 <div class="page-hero" id="about-bg">
     <div class="page-head">
         <h1>About The Project</h1>
@@ -85,7 +85,7 @@ function About() {
 
 </div>
 </div>
-</div>
+
   )
 }
 

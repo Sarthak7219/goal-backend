@@ -15,38 +15,106 @@ function Resources() {
         <img src={iconImg} alt="Icon" /> {/* Use imported icon image */}
       </div>
 
-      <div className="container">
-        <div className="quick-link-box" id="resources-sidebox">
-          <a href="#publications" className="quicklink active">- Publications</a>
-          <a href="#training-manuels" className="quicklink">- Training Manuels</a>
-        </div>
+      <div class="container">
 
-        <div className="right" id="resources-right">
-          <section className="resources" id="publications">
-            <div className="section-head">
-              <div>
+<div class="quick-link-box" id="resources-sidebox">
+    <a href="#publications" class="quicklink active">- Publications</a>
+    <a href="#training-manuels" class="quicklink">- Training Manuels</a>
+</div>
+
+<div class="right" id="resources-right">
+    <section class="resources" id="publications">
+        <div class="section-head">
+            <div>
                 <p>Publications</p>
-                <div className="line"></div>
-              </div>
-              <h1>Read Our Publications</h1>
+                <div class="line"></div>
             </div>
-
-            <div className="resources-container">
-              <div className="resource-box">
-                <img src={resourceImage} alt="Resource" /> {/* Use imported resource image */}
-                <div className="detail">
-                  <p>Publisher</p>
-                  <h3>Lorem ipsum dolor sit amet consectetur.</h3>
-                  <p className="date">June 27, 2023</p>
-                </div>
-              </div>
-              {/* Repeat the same structure for other resource boxes */}
-            </div>
-          </section>
-
-          {/* Similar structure for the Training Manuals section */}
+            <h1>Read Our Publications</h1>
         </div>
-      </div>
+
+        <div class="resources-container">
+            <div class="resource-box">
+                <img src={resourceImage} alt="here is image"/>
+                <div class="detail">
+                    <p>Publisher</p>
+                    <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                    <p class="date">June27, 2023</p>
+                </div>
+            </div>
+            <div class="resource-box">
+                <img src={resourceImage} alt="here is image"/>
+                <div class="detail">
+                    <p>Publisher</p>
+                    <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                    <p class="date">June27, 2023</p>
+                </div>
+            </div>
+            <div class="resource-box">
+                <img src={resourceImage} alt="here is image"/>
+                <div class="detail">
+                    <p>Publisher</p>
+                    <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                    <p class="date">June27, 2023</p>
+                </div>
+            </div>
+            <div class="resource-box">
+                <img src={resourceImage} alt="here is image"/>
+                <div class="detail">
+                    <p>Publisher</p>
+                    <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                    <p class="date">June27, 2023</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="resources" id="training-manuels">
+        <div class="section-head">
+            <div>
+                <p>Training Manuels</p>
+                <div class="line"></div>
+            </div>
+
+            <h1>Read Our Training Manuels</h1>
+        </div>
+
+        <div class="resources-container">
+            <div class="resource-box">
+                <img src={resourceImage} alt="here is image"/>
+                <div class="detail">
+                    <p>Publisher</p>
+                    <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                    <p class="date">June27, 2023</p>
+                </div>
+            </div>
+            <div class="resource-box">
+                <img src={resourceImage} alt="here is image"/>
+                <div class="detail">
+                    <p>Publisher</p>
+                    <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                    <p class="date">June27, 2023</p>
+                </div>
+            </div>
+            <div class="resource-box">
+                <img src={resourceImage} alt="here is image"/>
+                <div class="detail">
+                    <p>Publisher</p>
+                    <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                    <p class="date">June27, 2023</p>
+                </div>
+            </div>
+            <div class="resource-box">
+                <img src={resourceImage} alt="here is image"/>
+                <div class="detail">
+                    <p>Publisher</p>
+                    <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                    <p class="date">June27, 2023</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</div>
     </div>
   );
 }
