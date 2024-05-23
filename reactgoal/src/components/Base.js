@@ -1,7 +1,7 @@
 import React from 'react'
 import "./style.css";
 import "./global.css";
-
+import {NavLink} from "react-router-dom"
 
 import logoImg from "../images/logo (2).png";
 import downArrowImg from "../images/down.png";
@@ -9,54 +9,54 @@ import searchImg from "../images/search.png";
 function Base() {
   return (
     <div class="navbar">
-    <div class="goal-logo"><a href="/"><img src={logoImg} alt="image" /></a></div>
+    <div class="goal-logo"><NavLink to="/"><img src={logoImg} alt="image" /></NavLink></div>
     <div class="navlist">
       <ul class="lists">
-        <li class="about"><a href="/about">About</a></li>
-        <li class="worshops"><a href="/workshop">Workshops</a></li>
+        <li class="about"><NavLink to="/about">About</NavLink></li>
+        <li class="worshops"><NavLink to="/workshop">Workshops</NavLink></li>
 
         <li class="dropdown-menu">
-          <a href="/resources" class="Resources"
+          <NavLink to="/resources" class="Resources"
             >Resources<img src={downArrowImg}
-          /></a>
+          /></NavLink>
           <ul class="dropdown">
-            <li class="case1"><a href="#">Publications</a></li>
-            <li class="case2"><a href="#">Training manuals</a></li>
+            <li class="case1"><NavLink to="#">Publications</NavLink></li>
+            <li class="case2"><NavLink to="#">Training manuals</NavLink></li>
           </ul>
         </li>
         <li class="dropdown-menu">
-          <a href="/team" class="/team">Team<img src={downArrowImg} /></a>
+          <NavLink to="/team" class="/team">Team<img src={downArrowImg} /></NavLink>
           <ul class="dropdown">
-            <li class="case1"><a href="#">Collabarotors</a></li>
-            <li class="case2"><a href="#">Research associates</a></li>
-            <li class="case2"><a href="#">Community Trainers</a></li>
-            <li class="case2"><a href="#">Intern</a></li>
-            <li class="case2"><a href="#">Students</a></li>
+            <li class="case1"><NavLink to="#">Collabarotors</NavLink></li>
+            <li class="case2"><NavLink to="#">Research associates</NavLink></li>
+            <li class="case2"><NavLink to="#">Community Trainers</NavLink></li>
+            <li class="case2"><NavLink to="#">Intern</NavLink></li>
+            <li class="case2"><NavLink to="#">Students</NavLink></li>
           </ul>
         </li>
-        <li class="Gallery"><a href="/gallery">Gallery</a></li>
+        <li class="Gallery"><NavLink to="/gallery">Gallery</NavLink></li>
         <li class="dropdown-menu">
-          <a href="/casestudy">Case Studies<img src={downArrowImg} /></a>
+          <NavLink to="/casestudy">Case Studies<img src={downArrowImg} /></NavLink>
           <ul class="dropdown">
-            <li class="case1"><a href="#">Case Study1</a></li>
-            <li class="case2"><a href="#">Case Study2</a></li>
-            <li class="case3"><a href="#">Case Study3</a></li>
-            <li class="case4"><a href="#">Case Study4</a></li>
-            <li class="case5"><a href="#">Case Study5</a></li>
+            <li class="case1"><NavLink to="#">Case Study1</NavLink></li>
+            <li class="case2"><NavLink to="#">Case Study2</NavLink></li>
+            <li class="case3"><NavLink to="#">Case Study3</NavLink></li>
+            <li class="case4"><NavLink to="#">Case Study4</NavLink></li>
+            <li class="case5"><NavLink to="#">Case Study5</NavLink></li>
           </ul>
         </li>
       </ul>
     </div>
     <div class="lang">
       <li class="dropdown-menu">
-        <a href="#" class="language"
+        <NavLink to="#" class="language"
           >English<img src={downArrowImg}
-        /></a>
+        /></NavLink>
         <ul class="dropdown">
-          <li class="case1"><a href="#">Hindi</a></li>
-          <li class="case2"><a href="#">Sinhali</a></li>
-          <li class="case2"><a href="#">Nepali</a></li>
-          <li class="case2"><a href="#">Japanese</a></li>
+          <li class="case1"><NavLink to="#">Hindi</NavLink></li>
+          <li class="case2"><NavLink to="#">Sinhali</NavLink></li>
+          <li class="case2"><NavLink to="#">Nepali</NavLink></li>
+          <li class="case2"><NavLink to="#">Japanese</NavLink></li>
         </ul>
       </li>
       <img src={searchImg} alt="" />

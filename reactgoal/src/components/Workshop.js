@@ -9,7 +9,7 @@ import iconImg from '../images/icon.png';
 import underlineImg from '../images/underlineimg.png';
 function workshop() {
   return (
-    <div class="workshop-page">
+    <div class="workshop-detail-page">
        <div class="page-hero" id="gallery-bg">
         <div class="page-head">
             <h1>Workshop</h1>

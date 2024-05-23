@@ -748,7 +748,7 @@ background-color: var(--text-pink);
     font-family: Poppins;
     font-size: 12px;
     font-style: normal;
-    
+    font-weight:
 }
 .homepage .area-desc {
     display: flex;
@@ -799,8 +799,7 @@ background-color: var(--text-pink);
     text-transform: capitalize;
 }
 
-
-.homepage .workshop-page{
+.workshop-page{
     display: flex;
     flex-direction: column;
     height: 508.5px;
@@ -811,14 +810,14 @@ background-color: var(--text-pink);
     margin-top: 90.25px;
 
 }
-.homepage .workshop-content{
+.workshop-content{
     width: 972px;
 height: 625.989px;
 
 
 
 }
-.homepage .head{
+head{
     display:flex;
     flex-direction: column;
 
@@ -826,7 +825,7 @@ height: 625.989px;
     gap: 5.943px;
 
 }
-.homepage .head h5{
+.head h5{
     color: #252A34;
     font-family: Poppins;
     font-size: 17.829px;
@@ -835,7 +834,7 @@ height: 625.989px;
     line-height: 27.734px; /* 155.556% */
     text-transform: capitalize;
 }
-.homepage .head h2{
+.head h2{
     color: #252A34;
     font-family: "Playfair Display";
     font-size: 38.629px;
@@ -844,7 +843,7 @@ height: 625.989px;
     line-height: 49.524px; /* 128.205% */
     text-transform: capitalize;
 }
-.homepage .workshop-body{
+.workshop-body{
     width: 962.755px;
     display: flex;
     flex-direction: column;
@@ -853,11 +852,11 @@ height: 625.989px;
     gap: 8.45px;
 }
 
-.homepage .workshop-list{
+.workshop-list{
     display: flex;
     gap:16.34px;
 }
-.homepage .detail{
+.detail{
     
     display: flex;
 flex-direction: column;
@@ -865,24 +864,24 @@ align-items: flex-start;
 gap: 13.69px;
     display: none;
 }
-.homepage .worshop-detail{
+.worshop-detail{
 
 width: 310.673px;
 height: 215.4px;
 background-image: url('../images/workshops/workshop1.png');
 }
 
-.homepage .worshop-detail:hover{
+.worshop-detail:hover{
 background-image: url('../images/workshops/workshop6.png');
 }
-.homepage .worshop-detail:hover .detail{
+.worshop-detail:hover .detail{
     padding: 32.3px 42px;
     display: flex;
     flex-direction: column;
 align-items: flex-start;
 gap: 13.69px;
 }
-.homepage .worshop-detail h2{
+.worshop-detail h2{
     color: var(--text-white, #FFF);
 font-family: Poppins;
 font-size: 13.485px;
@@ -890,12 +889,12 @@ font-style: normal;
 font-weight: 500;
 line-height: normal;
 }
-.homepage .venue{
+.venue{
     display: flex;
     flex-direction: column;
     gap: 10.27px;
 }
-.homepage .worshop-detail p{
+.worshop-detail p{
     color: var(--goal-gray, #D0D0D0);
 font-family: Poppins;
 font-size: 8.894px;
@@ -903,7 +902,7 @@ font-style: normal;
 font-weight: 500;
 line-height: normal;
 }
-.homepage .detail .btn{
+.detail .btn{
     display: flex;
 width: 105.317px;
 height: 35.6px;
@@ -911,7 +910,7 @@ padding: 0px 0.067px 0px 0.065px;
 justify-content: center;
 align-items: center;
 }
-.homepage .left-right-icons{
+.left-right-icons{
 width: 95.641px;
 height: 40.576px;
 position: relative;
@@ -921,9 +920,10 @@ left: 420px;
 
 
 
-.homepage .dots{
+.dots{
     text-align: center;
 }
+
 /* objective */
 
 .homepage .objective-page {
@@ -1495,6 +1495,8 @@ left: 420px;
 
 .workshop-page{
     display: flex;
+    
+
     flex-direction: column;
     justify-content: center;
     align-items:center;
