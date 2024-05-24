@@ -12,6 +12,7 @@ import iconImg from "../images/icon.png";
 import underlineImg from "../images/underlineimg.png";
 import "./global.css";
 import "./style.css";
+import "./main.js";
 
 function Gallery() {
   return (

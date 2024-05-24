@@ -33,32 +33,32 @@ body{
 }
 
 #case_studies-bg{
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('/static/images/DJI_0069.JPG') lightgray 50% / cover no-repeat;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('../images/DJI_0069.JPG') lightgray 50% / cover no-repeat;
 }
 
 #gallery-bg{
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('/static/images/DJI_0052.JPG') lightgray 50% / cover no-repeat;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('../images/DJI_0052.JPG') lightgray 50% / cover no-repeat;
 }
 
 #resources-bg{
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('/static/images/DSC_2080.JPG') lightgray 50% / cover no-repeat;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('../images/DSC_2080.JPG') lightgray 50% / cover no-repeat;
 }
 
 #about-bg{
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('/static/images/DSC_2080.JPG') lightgray 50% / cover no-repeat;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('../images/DSC_2080.JPG') lightgray 50% / cover no-repeat;
 }
 
 #team-bg{
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('/static/images/DSC_2308.JPG') lightgray 50% / cover no-repeat;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('../images/DSC_2308.JPG') lightgray 50% / cover no-repeat;
 }
 
 #workshop_detail-bg{
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('/static/images/DJI_0069.JPG') lightgray 50% / cover no-repeat;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), url('../images/DJI_0069.JPG') lightgray 50% / cover no-repeat;
 }
 
 
 #profile-bg{
-    background:  url('/static/images/iit_image.png') lightgray 50% / cover no-repeat;
+    background:  url('../images/iit_image.png') lightgray 50% / cover no-repeat;
 }
 
 

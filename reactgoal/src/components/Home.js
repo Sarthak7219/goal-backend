@@ -1,23 +1,21 @@
 import React from "react";
 import "./global.css";
 import "./style.css";
-import archdeptImg from "../images/archdept.png";
 import logo7Img from "../images/logo/7.png";
 import logo8Img from "../images/logo/8.png";
 import logo9Img from "../images/logo/9.png";
 import oneImg from "../images/1.png";
 import twoImg from "../images/2.png";
 import threeImg from "../images/3.png";
-import logoImg from "../images/logo (2).png";
 import videoSrc from "../images/video.mp4";
-import downArrowImg from "../images/down.png";
 import frame38517Img from "../images/Frame 38517.png";
 import frame38516Img from "../images/Frame 38516.png";
 import small1Img from "../images/small1.png";
 import small2Img from "../images/small2.png";
 import small3Img from "../images/small3.png";
 import small4Img from "../images/small4.png";
-import leftArrowImg from "../images/leftarrow.png";
+import back_to_top_arrow from "../images/back_to_top_arrow.svg";
+import leftArrowImg from "../images/rightarrow.png";
 import rightArrowImg from "../images/rightarrow.png";
 import gallery1Img from "../images/gallery/image1.jpg";
 import gallery2Img from "../images/gallery/image2.jpg";
@@ -32,24 +30,23 @@ import story3Img from "../images/story3 (2).png";
 import designleftImg from "../images/designleft.png";
 import designrightImg from "../images/designright.png";
 import line172Img from "../images/Line 172.png";
-import ellipse377Img from "../images/Ellipse 377 (1).png";
-import ellipse379Img from "../images/Ellipse 379 (1).png";
+import calendarIcon from "../images/calendar.svg";
+import location_icon from "../images/location_icon.svg";
+import selected_dot from "../images/selected_dot.svg";
+import unselected_dot from "../images/unselected_dot.svg";
 import apnLogo1Img from "../images/APN Logo-c-v 1 (1).png";
-import apnLogo2Img from "../images/APN Logo-c-v 1 (2).png";
 import linkarrowImg from "../images/linkarrow.png";
 import verticalineImg from "../images/verticaline.png";
 import JNUImg from "../images/logo/JNU.png";
 import IITRImg from "../images/logo/IITR.png";
-import searchImg from "../images/search.png";
 import mapImg from "../images/map.png";
-import video from "../images/video.mp4";
 import { useRef } from "react";
 function Home() {
   const videoRef = useRef(null);
   return (
     <div>
       <div class="homepage">
-        <div class="header">
+        <div class="header" id="hero">
           <video
             ref={videoRef}
             autoPlay
@@ -68,9 +65,11 @@ function Home() {
               </p>
               <p class="funder">An APN Funded Project | IIT Roorkee</p>
               <button class="btn">
-                <div class="btn-text">
-                  <p>Explore</p>
-                </div>
+                <a href="#about-home">
+                  <div class="btn-text">
+                    <p>Explore</p>
+                  </div>
+                </a>
               </button>
             </div>
           </div>
@@ -93,8 +92,10 @@ function Home() {
             </div>
           </div>
         </div>
-
-        <div class="about-page">
+        <a href="#hero">
+          <img src={back_to_top_arrow} class="back_to_top_arrow" />
+        </a>
+        <div class="about-page" id="about-home">
           <div class="about-image">
             <img src={frame38517Img} alt="" class="img1" />
             <img src={frame38516Img} alt="" class="img2" />
@@ -177,7 +178,7 @@ function Home() {
           </div>
         </div>
         <div class="workshop-page">
-          <div class="workshop-content">
+          <div class="workshop-content-home">
             <div class="head">
               <div class="headline">
                 <h3>Recent workshops</h3>
@@ -188,120 +189,148 @@ function Home() {
             </div>
             <div class="workshop-body">
               <div class="left-right-icons">
-                <img src="./images/leftarrow.png" alt="" />
-                <img src="./images/rightarrow.png" alt="" />
+                <img src={leftArrowImg} class="left-arrow" alt="" />
+                <img src={rightArrowImg} alt="" />
               </div>
               <div class="workshops">
                 <ul class="workshop-list">
-                  <li class="workshop">
-                    <div class="worshop-detail-home">
-                      <div class="detail">
-                        <h2>
-                          Adaptive Transformations for Climate Change and
-                          Disaster Risk Reduction Workshop
-                        </h2>
-                        <div class="venue">
+                  <li class="worshop-detail-home">
+                    <div class="detail">
+                      <h2>
+                        Adaptive Transformations for Climate Change and Disaster
+                        Risk Reduction Workshop
+                      </h2>
+                      <div class="venue">
+                        <div>
+                          <img src={location_icon} alt="icon" />
                           <p>
                             Department of Architecture and Planning, IIT Roorkee
                           </p>
+                        </div>
+                        <div>
+                          <img src={calendarIcon} alt="icon" />
                           <p>10th February, 2024</p>
                         </div>
-                        <button class="btn">View Details</button>
                       </div>
+                      <button class="btn">View Details</button>
                     </div>
                   </li>
-                  <li class="workshop">
-                    <div class="worshop-detail-home">
-                      <div class="detail">
-                        <h2>
-                          Adaptive Transformations for Climate Change and
-                          Disaster Risk Reduction Workshop
-                        </h2>
-                        <div class="venue">
+
+                  <li class="worshop-detail-home">
+                    <div class="detail">
+                      <h2>
+                        Adaptive Transformations for Climate Change and Disaster
+                        Risk Reduction Workshop
+                      </h2>
+                      <div class="venue">
+                        <div>
+                          <img src={location_icon} alt="icon" />
                           <p>
                             Department of Architecture and Planning, IIT Roorkee
                           </p>
+                        </div>
+                        <div>
+                          <img src={calendarIcon} alt="icon" />
                           <p>10th February, 2024</p>
                         </div>
-                        <button class="btn">View Details</button>
                       </div>
+                      <button class="btn">View Details</button>
                     </div>
                   </li>
-                  <li class="workshop">
-                    <div class="worshop-detail-home">
-                      <div class="detail">
-                        <h2>
-                          Adaptive Transformations for Climate Change and
-                          Disaster Risk Reduction Workshop
-                        </h2>
-                        <div class="venue">
+
+                  <li class="worshop-detail-home">
+                    <div class="detail">
+                      <h2>
+                        Adaptive Transformations for Climate Change and Disaster
+                        Risk Reduction Workshop
+                      </h2>
+                      <div class="venue">
+                        <div>
+                          <img src={location_icon} alt="icon" />
                           <p>
                             Department of Architecture and Planning, IIT Roorkee
                           </p>
+                        </div>
+                        <div>
+                          <img src={calendarIcon} alt="icon" />
                           <p>10th February, 2024</p>
                         </div>
-                        <button class="btn">View Details</button>
                       </div>
+                      <button class="btn">View Details</button>
                     </div>
                   </li>
                 </ul>
                 <ul class="workshop-list">
-                  <li class="workshop">
-                    <div class="worshop-detail-home">
-                      <div class="detail">
-                        <h2>
-                          Adaptive Transformations for Climate Change and
-                          Disaster Risk Reduction Workshop
-                        </h2>
-                        <div class="venue">
+                  <li class="worshop-detail-home">
+                    <div class="detail">
+                      <h2>
+                        Adaptive Transformations for Climate Change and Disaster
+                        Risk Reduction Workshop
+                      </h2>
+                      <div class="venue">
+                        <div>
+                          <img src={location_icon} alt="icon" />
                           <p>
                             Department of Architecture and Planning, IIT Roorkee
                           </p>
+                        </div>
+                        <div>
+                          <img src={calendarIcon} alt="icon" />
                           <p>10th February, 2024</p>
                         </div>
-                        <button class="btn">View Details</button>
                       </div>
+                      <button class="btn">View Details</button>
                     </div>
                   </li>
-                  <li class="workshop">
-                    <div class="worshop-detail-home">
-                      <div class="detail">
-                        <h2>
-                          Adaptive Transformations for Climate Change and
-                          Disaster Risk Reduction Workshop
-                        </h2>
-                        <div class="venue">
+
+                  <li class="worshop-detail-home">
+                    <div class="detail">
+                      <h2>
+                        Adaptive Transformations for Climate Change and Disaster
+                        Risk Reduction Workshop
+                      </h2>
+                      <div class="venue">
+                        <div>
+                          <img src={location_icon} alt="icon" />
                           <p>
                             Department of Architecture and Planning, IIT Roorkee
                           </p>
+                        </div>
+                        <div>
+                          <img src={calendarIcon} alt="icon" />
                           <p>10th February, 2024</p>
                         </div>
-                        <button class="btn">View Details</button>
                       </div>
+                      <button class="btn">View Details</button>
                     </div>
                   </li>
-                  <li class="workshop">
-                    <div class="worshop-detail-home">
-                      <div class="detail">
-                        <h2>
-                          Adaptive Transformations for Climate Change and
-                          Disaster Risk Reduction Workshop
-                        </h2>
-                        <div class="venue">
+
+                  <li class="worshop-detail-home">
+                    <div class="detail">
+                      <h2>
+                        Adaptive Transformations for Climate Change and Disaster
+                        Risk Reduction Workshop
+                      </h2>
+                      <div class="venue">
+                        <div>
+                          <img src={location_icon} alt="icon" />
                           <p>
                             Department of Architecture and Planning, IIT Roorkee
                           </p>
+                        </div>
+                        <div>
+                          <img src={calendarIcon} alt="icon" />
                           <p>10th February, 2024</p>
                         </div>
-                        <button class="btn">View Details</button>
                       </div>
+                      <button class="btn">View Details</button>
                     </div>
                   </li>
                 </ul>
               </div>
               <div class="dots">
-                <img src="./images/Ellipse 377 (1).png" alt="" />
-                <img src="./images/Ellipse 379 (1).png" alt="" />
+                <img src={selected_dot} alt="" />
+                <img src={unselected_dot} alt="" />
               </div>
             </div>
           </div>
@@ -339,7 +368,6 @@ function Home() {
           </div>
           <img src={designrightImg} alt="" class="designright" />
         </div>
-
         <div class="gallery-home">
           <h2>Our Gallery</h2>
           <div class="images">
@@ -375,7 +403,6 @@ function Home() {
           </div>
           <button class="btn">View Gallery</button>
         </div>
-
         <div class="stories-page">
           <div class="stories-content">
             <div class="head">
@@ -383,11 +410,11 @@ function Home() {
                 <h3>stories</h3>
                 <img src={line172Img} alt="" />
               </div>
-              <h2>We conduct regular workshops</h2>
+              <h2>Hear from the people themselves</h2>
             </div>
             <div class="stories-body">
               <div class="left-right-icons">
-                <img src={leftArrowImg} alt="" />
+                <img src={leftArrowImg} class="left-arrow" alt="" />
                 <img src={rightArrowImg} alt="" />
               </div>
               <div class="stories">
@@ -404,16 +431,17 @@ function Home() {
                 </ul>
               </div>
               <div class="dots">
-                <img src={ellipse377Img} alt="" />
-                <img src={ellipse379Img} alt="" />
+                <img src={selected_dot} alt="" />
+                <img src={unselected_dot} alt="" />
               </div>
             </div>
           </div>
         </div>
-
         <div class="funding-agency">
           <div class="fund-content">
-            <h2>Funding Agency</h2>
+            <div class="fund-head">
+              <h2>Funding Agency</h2>
+            </div>
             <div class="fund-body">
               <div class="left-image">
                 <img src={apnLogo1Img} alt="" />
@@ -443,7 +471,6 @@ function Home() {
             </div>
           </div>
         </div>
-
         <div class="logos">
           <ul>
             <li class="logo">
