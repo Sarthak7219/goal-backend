@@ -1,6 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from .models import *
+from .serializer import *
+
+class Case_study_View(APIView):
+    def get(self,request):
+        output=Case_study.objects.all()
+        return Response(output)
 
 def home_view(request):
     context = {}
