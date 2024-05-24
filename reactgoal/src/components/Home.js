@@ -41,6 +41,8 @@ import JNUImg from "../images/logo/JNU.png";
 import IITRImg from "../images/logo/IITR.png";
 import mapImg from "../images/map.png";
 import { useRef } from "react";
+import { NavLink } from "react-router-dom";
+
 function Home() {
   const videoRef = useRef(null);
   return (
@@ -64,13 +66,13 @@ function Home() {
                 Gender-Orientated Adaptive Transformation cross-Learning
               </p>
               <p class="funder">An APN Funded Project | IIT Roorkee</p>
-              <button class="btn">
-                <a href="#about-home">
+              <a href="#about-home">
+                <button class="btn">
                   <div class="btn-text">
                     <p>Explore</p>
                   </div>
-                </a>
-              </button>
+                </button>
+              </a>
             </div>
           </div>
 
@@ -80,13 +82,13 @@ function Home() {
             <div class="collab- s">
               <ul class="logos">
                 <li class="logo">
-                  <img src={apnLogo1Img} alt="" />
+                  <img src={apnLogo1Img} alt="logo" />
                 </li>
                 <li class="logo">
-                  <img src={apnLogo1Img} alt="" />
+                  <img src={apnLogo1Img} alt="logo" />
                 </li>
                 <li class="logo">
-                  <img src={apnLogo1Img} alt="" />
+                  <img src={apnLogo1Img} alt="logo" />
                 </li>
               </ul>
             </div>
@@ -97,8 +99,8 @@ function Home() {
         </a>
         <div class="about-page" id="about-home">
           <div class="about-image">
-            <img src={frame38517Img} alt="" class="img1" />
-            <img src={frame38516Img} alt="" class="img2" />
+            <img src={frame38517Img} alt="about" class="img1" />
+            <img src={frame38516Img} alt="about" class="img2" />
           </div>
           <div class="about-description">
             <div class="overview">
@@ -118,7 +120,9 @@ function Home() {
                 </p>
               </div>
 
-              <button class="btn">Read more</button>
+              <NavLink to="/about">
+                <button class="btn">Read more</button>
+              </NavLink>
             </div>
           </div>
         </div>
@@ -212,7 +216,10 @@ function Home() {
                           <p>10th February, 2024</p>
                         </div>
                       </div>
-                      <button class="btn">View Details</button>
+                      <NavLink to="/workshop">
+                        {" "}
+                        <button class="btn">View Details</button>
+                      </NavLink>
                     </div>
                   </li>
 
@@ -234,7 +241,10 @@ function Home() {
                           <p>10th February, 2024</p>
                         </div>
                       </div>
-                      <button class="btn">View Details</button>
+                      <NavLink to="/workshop">
+                        {" "}
+                        <button class="btn">View Details</button>
+                      </NavLink>
                     </div>
                   </li>
 
@@ -256,7 +266,10 @@ function Home() {
                           <p>10th February, 2024</p>
                         </div>
                       </div>
-                      <button class="btn">View Details</button>
+                      <NavLink to="/workshop">
+                        {" "}
+                        <button class="btn">View Details</button>
+                      </NavLink>
                     </div>
                   </li>
                 </ul>
@@ -401,7 +414,10 @@ function Home() {
               </ul>
             </div>
           </div>
-          <button class="btn">View Gallery</button>
+          <NavLink to="/gallery">
+            {" "}
+            <button class="btn">View Gallery</button>
+          </NavLink>
         </div>
         <div class="stories-page">
           <div class="stories-content">

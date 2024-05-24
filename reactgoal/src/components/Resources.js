@@ -2,6 +2,7 @@ import React from "react";
 import "./global.css";
 import "./style.css";
 import "./main.js";
+import { NavLink } from "react-router-dom";
 import iconImg from "../images/icon.png";
 import resourceImage from "../images/DSC_2080.JPG"; // Import resource image
 
@@ -12,7 +13,8 @@ function Resources() {
         <div className="page-head">
           <h1>Resources</h1>
           <p>
-            <a href="{% url 'home' %}">Home</a> / <a href="">Resources</a>
+            <NavLink to="/">Home</NavLink> /{" "}
+            <NavLink to="/resources">Resources</NavLink>
           </p>
         </div>
         <img src={iconImg} alt="Icon" /> {/* Use imported icon image */}
@@ -40,7 +42,7 @@ function Resources() {
 
             <div class="resources-container">
               <div class="resource-box">
-                <img src={resourceImage} alt="here is image" />
+                <img src={resourceImage} alt="" />
                 <div class="detail">
                   <p>Publisher</p>
                   <h3>Lorem ipsum dolor sit amet consectetur.</h3>
@@ -48,7 +50,7 @@ function Resources() {
                 </div>
               </div>
               <div class="resource-box">
-                <img src={resourceImage} alt="here is image" />
+                <img src={resourceImage} alt="" />
                 <div class="detail">
                   <p>Publisher</p>
                   <h3>Lorem ipsum dolor sit amet consectetur.</h3>
@@ -56,7 +58,7 @@ function Resources() {
                 </div>
               </div>
               <div class="resource-box">
-                <img src={resourceImage} alt="here is image" />
+                <img src={resourceImage} alt="" />
                 <div class="detail">
                   <p>Publisher</p>
                   <h3>Lorem ipsum dolor sit amet consectetur.</h3>
@@ -64,7 +66,7 @@ function Resources() {
                 </div>
               </div>
               <div class="resource-box">
-                <img src={resourceImage} alt="here is image" />
+                <img src={resourceImage} alt="" />
                 <div class="detail">
                   <p>Publisher</p>
                   <h3>Lorem ipsum dolor sit amet consectetur.</h3>
@@ -86,7 +88,7 @@ function Resources() {
 
             <div class="resources-container">
               <div class="resource-box">
-                <img src={resourceImage} alt="here is image" />
+                <img src={resourceImage} alt="" />
                 <div class="detail">
                   <p>Publisher</p>
                   <h3>Lorem ipsum dolor sit amet consectetur.</h3>
@@ -94,7 +96,7 @@ function Resources() {
                 </div>
               </div>
               <div class="resource-box">
-                <img src={resourceImage} alt="here is image" />
+                <img src={resourceImage} alt="" />
                 <div class="detail">
                   <p>Publisher</p>
                   <h3>Lorem ipsum dolor sit amet consectetur.</h3>
@@ -102,7 +104,7 @@ function Resources() {
                 </div>
               </div>
               <div class="resource-box">
-                <img src={resourceImage} alt="here is image" />
+                <img src={resourceImage} alt="" />
                 <div class="detail">
                   <p>Publisher</p>
                   <h3>Lorem ipsum dolor sit amet consectetur.</h3>
@@ -110,7 +112,7 @@ function Resources() {
                 </div>
               </div>
               <div class="resource-box">
-                <img src={resourceImage} alt="here is image" />
+                <img src={resourceImage} alt="" />
                 <div class="detail">
                   <p>Publisher</p>
                   <h3>Lorem ipsum dolor sit amet consectetur.</h3>

@@ -12,6 +12,7 @@ import iconImg from "../images/icon.png";
 import underlineImg from "../images/underlineimg.png";
 import "./global.css";
 import "./style.css";
+import { NavLink } from "react-router-dom";
 import "./main.js";
 
 function Gallery() {
@@ -21,7 +22,8 @@ function Gallery() {
         <div class="page-head">
           <h1>Photo Gallery</h1>
           <p>
-            <a href="{% url 'home' %}">Home</a> / <a href="">Gallery</a>
+            <NavLink to="/">Home</NavLink> /{" "}
+            <NavLink to="/gallery">Gallery</NavLink>
           </p>
         </div>
         <img src={iconImg} alt="" />

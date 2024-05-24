@@ -2,6 +2,7 @@ import React from "react";
 
 import "./global.css";
 import "./style.css";
+import { NavLink } from "react-router-dom";
 
 import workshopImage from "../images/workhopimage.png";
 import workshopDetailImage1 from "../images/workshops/workshopdetail1.png";
@@ -12,7 +13,11 @@ function workshop() {
       <div class="page-hero" id="gallery-bg">
         <div class="page-head">
           <h1>Workshop</h1>
-          <p>Home / Workshop</p>
+          <p>
+            {" "}
+            <NavLink to="/">Home</NavLink> /{" "}
+            <NavLink to="/workshop">Workshop</NavLink>
+          </p>
         </div>
         <img src={iconImg} alt="" />
       </div>
