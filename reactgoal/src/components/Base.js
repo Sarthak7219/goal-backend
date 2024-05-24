@@ -5,8 +5,22 @@ import { NavLink } from "react-router-dom";
 
 import logoImg from "../images/logo (2).png";
 import downArrowImg from "../images/down_arrow.svg";
-import searchImg from "../images/search.png";
+import searchImg from "../images/search_icon.svg";
+import cancelIcon from "../images/cancel_icon.svg";
+import { useState } from "react";
 function Base() {
+  const [isActive, setIsActive] = useState(false);
+
+  const handleSearchClick = () => {
+    if (!isActive) {
+      setIsActive(true);
+    }
+  };
+
+  const toggleActiveClass = () => {
+    setIsActive(!isActive);
+  };
+
   return (
     <div class="navbar">
       <NavLink to="/">
@@ -111,7 +125,16 @@ function Base() {
             </li>
           </ul>
         </div>
-        <img src={searchImg} alt="search_icon" />
+        <div
+          className={`searchbar ${isActive ? "active" : ""}`}
+          onClick={handleSearchClick}
+        >
+          <img src={searchImg} alt="search_icon" />
+          <form>
+            <input type="text" placeholder="Search" />
+            <img src={cancelIcon} onClick={toggleActiveClass} />
+          </form>
+        </div>
       </div>
     </div>
   );

@@ -2,12 +2,22 @@ import React from "react";
 import "./global.css";
 import "./style.css";
 import { NavLink } from "react-router-dom";
+import { scrollSpy } from "./scrollSpy";
+import { useEffect } from "react";
 import iconImg from "../images/icon.png";
 import profileImg from "../images/profile.jpeg"; // Import profile image
 import resourceCardBg from "../images/Rectangle 5995.png"; // Import background image for member card
 import harshitImg from "../images/harshit.jpeg"; // Import Harshit's image
 
 function Team() {
+  useEffect(() => {
+    const cleanup = scrollSpy();
+
+    return () => {
+      cleanup();
+    };
+  }, []);
+
   return (
     <div className="team-page">
       <div className="page-hero" id="team-bg">

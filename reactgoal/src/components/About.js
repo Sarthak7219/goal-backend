@@ -3,8 +3,18 @@ import iconImg from "../images/icon.png";
 import "./global.css";
 import "./style.css";
 import { NavLink } from "react-router-dom";
+import { scrollSpy } from "./scrollSpy";
+import { useEffect } from "react";
 
 function About() {
+  useEffect(() => {
+    const cleanup = scrollSpy();
+
+    return () => {
+      cleanup();
+    };
+  }, []);
+
   return (
     <div class="About-page">
       <div class="page-hero" id="about-bg">

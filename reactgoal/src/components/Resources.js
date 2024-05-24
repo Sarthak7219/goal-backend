@@ -1,12 +1,22 @@
 import React from "react";
 import "./global.css";
 import "./style.css";
-import "./main.js";
 import { NavLink } from "react-router-dom";
+import { scrollSpy } from "./scrollSpy";
+import { useEffect } from "react";
+
 import iconImg from "../images/icon.png";
 import resourceImage from "../images/DSC_2080.JPG"; // Import resource image
 
 function Resources() {
+  useEffect(() => {
+    const cleanup = scrollSpy();
+
+    return () => {
+      cleanup();
+    };
+  }, []);
+
   return (
     <div className="resources-page">
       <div className="page-hero" id="resources-bg">
