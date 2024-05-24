@@ -1,14 +1,27 @@
-import React from "react";
+import React,{ useEffect, useState } from "react";
 import "./global.css";
 import "./style.css";
 import { NavLink } from "react-router-dom";
 import { scrollSpy } from "./scrollSpy";
-import { useEffect } from "react";
+
 
 import iconImg from "../images/icon.png";
 import resourceImage from "../images/DSC_2080.JPG"; // Import resource image
 
 function Resources() {
+  const [data, setData] = useState({
+    resources: [],
+    team_members: [],
+    workshops: [],
+    case_studies: [],
+  });
+
+  useEffect(() => {
+    fetch('/api/combined-data/')
+      .then(response => response.json())
+      .then(data => setData(data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
   useEffect(() => {
     const cleanup = scrollSpy();
 
@@ -51,38 +64,21 @@ function Resources() {
             </div>
 
             <div class="resources-container">
+            <ul>
+            {data.resources.map(resource => (
+              <li>
               <div class="resource-box">
                 <img src={resourceImage} alt="" />
                 <div class="detail">
-                  <p>Publisher</p>
-                  <h3>Lorem ipsum dolor sit amet consectetur.</h3>
-                  <p class="date">June27, 2023</p>
+                  <p>{resource.publisher}</p>
+                  <h3>{resource.title}</h3>
+                  <p class="date">{resource.date_of_publishing}</p>
                 </div>
-              </div>
-              <div class="resource-box">
-                <img src={resourceImage} alt="" />
-                <div class="detail">
-                  <p>Publisher</p>
-                  <h3>Lorem ipsum dolor sit amet consectetur.</h3>
-                  <p class="date">June27, 2023</p>
                 </div>
-              </div>
-              <div class="resource-box">
-                <img src={resourceImage} alt="" />
-                <div class="detail">
-                  <p>Publisher</p>
-                  <h3>Lorem ipsum dolor sit amet consectetur.</h3>
-                  <p class="date">June27, 2023</p>
-                </div>
-              </div>
-              <div class="resource-box">
-                <img src={resourceImage} alt="" />
-                <div class="detail">
-                  <p>Publisher</p>
-                  <h3>Lorem ipsum dolor sit amet consectetur.</h3>
-                  <p class="date">June27, 2023</p>
-                </div>
-              </div>
+                </li>
+              ))}
+              </ul>
+              
             </div>
           </section>
 

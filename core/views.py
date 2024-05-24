@@ -1,19 +1,46 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from rest_framework import serializers
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from .models import Resources
+from .models import TeamMember
+from .models import Workshop
+from .models import Case_study
+from .serializer import ResourcesSerializer
+from .serializer import WorkshopSerializer
+from .serializer import TeamMemberSerializer
+from .serializer import Case_studySerializer
 from .models import *
 from .serializer import *
 
-class Case_study_View(APIView):
-    def get(self,request):
-        output=Case_study.objects.all()
-        return Response(output)
+
+
 
 def home_view(request):
     context = {}
     return render(request, 'index.html', context)
 
+class CombinedDataView(APIView):
+    def get(self, request):
+        resources = Resources.objects.all()
+        team_members = TeamMember.objects.all()
+        workshops = Workshop.objects.all()
+        case_studies = Case_study.objects.all()
+        
+        resources_serializer = ResourcesSerializer(resources, many=True)
+        team_members_serializer = TeamMemberSerializer(team_members, many=True)
+        workshops_serializer = WorkshopSerializer(workshops, many=True)
+        case_studies_serializer = Case_studySerializer(case_studies, many=True)
+        
+        data = {
+            'resources': resources_serializer.data,
+            'team_members': team_members_serializer.data,
+            'workshops': workshops_serializer.data,
+            'case_studies': case_studies_serializer.data,
+        }
+        
+        return Response(data)
 
 def about_view(request):
     context = {}

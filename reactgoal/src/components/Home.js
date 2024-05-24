@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState }  from "react";
 import "./global.css";
 import "./style.css";
 import logo7Img from "../images/logo/7.png";
@@ -44,6 +44,19 @@ import { useRef } from "react";
 import { NavLink } from "react-router-dom";
 
 function Home() {
+  const [data, setData] = useState({
+    resources: [],
+    team_members: [],
+    workshops: [],
+    case_studies: [],
+  });
+
+  useEffect(() => {
+    fetch('/api/combined-data/')
+      .then(response => response.json())
+      .then(data => setData(data))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
   const videoRef = useRef(null);
   return (
     <div>
