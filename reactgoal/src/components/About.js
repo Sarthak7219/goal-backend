@@ -16,30 +16,35 @@ function About() {
   }, []);
 
   return (
-    <div class="About-page">
-      <div class="page-hero" id="about-bg">
-        <div class="page-head">
+    <div className="About-page">
+      <div className="page-hero" id="about-bg">
+        <div className="page-head">
           <h1>About The Project</h1>
           <p>
-            <NavLink to="/">Home</NavLink> /{" "}
-            <NavLink to="/about">About</NavLink>
+            <NavLink to="/" className="hero-link">
+              Home
+            </NavLink>{" "}
+            /{" "}
+            <NavLink to="/about" className="hero-link">
+              About
+            </NavLink>
           </p>
         </div>
         <img src={iconImg} alt="icon" />
       </div>
 
-      <div class="container" id="about">
-        <div class="quick-link-box" id="about-sidebox">
-          <a href="#abstract" class="quicklink active">
+      <div className="container" id="about">
+        <div className="quick-link-box" id="about-sidebox">
+          <a href="#abstract" className="quicklink active">
             - Abstract
           </a>
-          <a href="#description" class="quicklink">
+          <a href="#description" className="quicklink">
             - Description
           </a>
         </div>
 
-        <div class="right" id="about-right">
-          <section class="about" id="abstract">
+        <div className="right" id="about-right">
+          <section className="about" id="abstract">
             <h1>Abstract</h1>
             <p>
               Project Goal attempts to tap adaptive transformations
@@ -63,7 +68,7 @@ function About() {
               and community inputs through hybrid mode
             </p>
           </section>
-          <section class="about" id="description">
+          <section className="about" id="description">
             <h1>Description</h1>
             <p>
               GOAL project creates a focused space for co-designing &
@@ -80,7 +85,7 @@ function About() {
               individuals, organizations, &cinstitutions. Moreover there are
               'power differentials & varying "status" which mfluence the
               communities capacity willingness to learn &take action, including
-              "class, gender, values, expectations &aspinations &ethimeity
+              "className, gender, values, expectations &aspinations &ethimeity
               <br></br>
               Key adaptive transformation, this project focuses, is the capacity
               of individuals, organizations, &societies to collaboratively Icam

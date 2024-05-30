@@ -88,7 +88,6 @@ def gallery_view(request):
 
 
 def workshop_detail_view(request):
-
     context = {}
     if request.method == 'GET':
         workshop_id = request.GET.get('workshop_id')

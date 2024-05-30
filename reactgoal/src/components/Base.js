@@ -31,7 +31,7 @@ function Base() {
           <NavLink to="/about">About</NavLink>
         </li>
         <li>
-          <NavLink to="/workshop">Workshops</NavLink>
+          <NavLink to="/workshops">Workshops</NavLink>
         </li>
 
         <li class="dropdown-menu">

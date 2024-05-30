@@ -1,59 +1,71 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import "./global.css";
 import "./style.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 import workshopImage from "../images/workhopimage.png";
 import workshopDetailImage1 from "../images/workshops/workshopdetail1.png";
 import iconImg from "../images/icon.png";
-function workshop() {
+
+function WorkshopDetail({ workshops }) {
+  const { id } = useParams();
+  const [workshop, setWorkshop] = useState(null);
+
+  useEffect(() => {
+    const selectedWorkshop = workshops.find(
+      (workshop) => workshop.id === parseInt(id)
+    );
+    setWorkshop(selectedWorkshop);
+  }, [id, workshops]);
+
+  if (!workshop) {
+    return <div>Workshop not found</div>;
+  }
+
   return (
-    <div class="workshop-detail-page">
-      <div class="page-hero" id="gallery-bg">
-        <div class="page-head">
+    <div className="workshop-detail-page">
+      <div className="page-hero" id="gallery-bg">
+        <div className="page-head">
           <h1>Workshop</h1>
           <p>
             {" "}
-            <NavLink to="/">Home</NavLink> /{" "}
-            <NavLink to="/workshop">Workshop</NavLink>
+            <NavLink to="/" className="hero-link">
+              Home
+            </NavLink>{" "}
+            /{" "}
+            <NavLink to="/workshops" className="hero-link">
+              Workshops
+            </NavLink>{" "}
+            /{" "}
+            <NavLink
+              to={`/workshops/workshop-detail/${workshop.id}`}
+              className="hero-link"
+            >
+              {workshop.title.slice(0, 40)}
+            </NavLink>
           </p>
         </div>
         <img src={iconImg} alt="" />
       </div>
-      <div class="workshop-content">
-        <div class="section-head">
+
+      <div className="workshop-content">
+        <div className="section-head">
           <div>
             <p>Workshop #1</p>
-            <div class="line"></div>
+            <div className="line"></div>
           </div>
-          <h1>
-            Adaptive Transformations for Climate Change and Disaster Risk
-            Reduction Workshop
-          </h1>
+          <h1>{workshop.title}</h1>
         </div>
-        <div class="workshop-container">
-          <div class="left-container">
+        <div className="workshop-container">
+          <div className="left-container">
             <img src={workshopImage} alt="" />
 
-            <div class="about-workshop">
+            <div className="about-workshop">
               <h2>About the workshop</h2>
-              <p>
-                Flyingfish Kafue pike cow shark California smoothtongue golden
-                loach temperate ocean-bass gulper Sailbearer kanyu porcupinefish
-                Kafue pike opah sunfish gudgeon boga Asiatic glassfish tadpole
-                fish! Alewife, poacher airbreathing catfish; zebra tilapia
-                northern pearleye naked-back knifefish pupfish dojo loach,
-                “snake mackerel bonytail chub arapaima horsefish weasel shark.”
-                Flyingfish Kafue pike cow shark California smoothtongue golden
-                loach temperate ocean-bass gulper Sailbearer kanyu porcupinefish
-                Kafue pike opah sunfish gudgeon boga Asiatic glassfish tadpole
-                fish! Alewife, poacher airbreathing catfish; zebra tilapia
-                northern pearleye naked-back knifefish pupfish dojo loach,
-                “snake mackerel bonytail chub arapaima horsefish weasel shark.”
-              </p>
+              <p>{workshop.description}</p>
             </div>
-            <div class="registration-detail">
+            <div className="registration-detail">
               <h2>Registration</h2>
               <h4>Target Audience</h4>
               <p>
@@ -68,7 +80,7 @@ function workshop() {
                 Last Day to register: 25th May 2023 
               </p>
             </div>
-            <div class="accomodation">
+            <div className="accomodation">
               <h2>Accomodation</h2>
               <p>
                 Accommodation is available for external participants (those from
@@ -80,12 +92,12 @@ function workshop() {
               </p>
             </div>
           </div>
-          <div class="right-container">
-            <div class="workshop-detail">
+          <div className="right-container">
+            <div className="workshop-detail">
               <h2>Workshop Details</h2>
               <div>
                 <h4>Date:</h4>
-                <p>12 sep 2021</p>
+                <p>{workshop.date}</p>
               </div>
               <div>
                 <h4>Coordinator:</h4>
@@ -93,48 +105,48 @@ function workshop() {
               </div>
               <div>
                 <h4>Venue:</h4>
-                <p>Department of Architecture and Planning, IIT Roorkee</p>
+                <p>{workshop.venue}</p>
               </div>
             </div>
-            <div class="recent-workshops">
+            <div className="recent-workshops">
               <h2>Recent Workshops</h2>
-              <div class="workshop-cards">
-                <div class="card">
+              <div className="workshop-cards">
+                <div className="card">
                   <img src={workshopDetailImage1} alt="" />
 
-                  <div class="desc">
+                  <div className="desc">
                     <h5>Charity, Expectati ons vs. Reality</h5>
                     <p>Homeless</p>
                   </div>
                 </div>
-                <div class="card">
+                <div className="card">
                   <img src={workshopDetailImage1} alt="" />
 
-                  <div class="desc">
+                  <div className="desc">
                     <h5>Charity, Expectati ons vs. Reality</h5>
                     <p>Homeless</p>
                   </div>
                 </div>
-                <div class="card">
+                <div className="card">
                   <img src={workshopDetailImage1} alt="" />
 
-                  <div class="desc">
+                  <div className="desc">
                     <h5>Charity, Expectati ons vs. Reality</h5>
                     <p>Homeless</p>
                   </div>
                 </div>
               </div>
             </div>
-            {/* <!-- <div class="popular-tags">
+            {/* <!-- <div className="popular-tags">
                 <h2>Popular tags</h2>
-                <div class="tags">
-                    <div class="btn">Food</div>
-                    <div class="btn">Food</div>
-                    <div class="btn">Food</div>
-                    <div class="btn">Food</div>
-                    <div class="btn">Food</div>
-                    <div class="btn">Food</div>
-                    <div class="btn">Food</div>
+                <div className="tags">
+                    <div className="btn">Food</div>
+                    <div className="btn">Food</div>
+                    <div className="btn">Food</div>
+                    <div className="btn">Food</div>
+                    <div className="btn">Food</div>
+                    <div className="btn">Food</div>
+                    <div className="btn">Food</div>
                 </div>
             </div> --> */}
           </div>
@@ -144,4 +156,4 @@ function workshop() {
   );
 }
 
-export default workshop;
+export default WorkshopDetail;

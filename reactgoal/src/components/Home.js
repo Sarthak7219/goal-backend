@@ -1,4 +1,4 @@
-import React, { useEffect, useState }  from "react";
+import React from "react";
 import "./global.css";
 import "./style.css";
 import logo7Img from "../images/logo/7.png";
@@ -43,20 +43,7 @@ import mapImg from "../images/map.png";
 import { useRef } from "react";
 import { NavLink } from "react-router-dom";
 
-function Home() {
-  const [data, setData] = useState({
-    resources: [],
-    team_members: [],
-    workshops: [],
-    case_studies: [],
-  });
-
-  useEffect(() => {
-    fetch('/api/combined-data/')
-      .then(response => response.json())
-      .then(data => setData(data))
-      .catch(error => console.error('Error fetching data:', error));
-  }, []);
+function Home({ data }) {
   const videoRef = useRef(null);
   return (
     <div>
@@ -204,157 +191,36 @@ function Home() {
 
               <h2>We conduct regular workshops</h2>
             </div>
-            <div class="workshop-body">
+            <div class="workshop-body ">
               <div class="left-right-icons">
                 <img src={leftArrowImg} class="left-arrow" alt="" />
-                <img src={rightArrowImg} alt="" />
+                <img src={leftArrowImg} class="right-arrow" alt="" />
               </div>
+
               <div class="workshops">
-                <ul class="workshop-list">
-                  <li class="worshop-detail-home">
+                {data.workshops.map((workshop) => (
+                  <div class="worshop-detail-home" key={workshop.id}>
                     <div class="detail">
-                      <h2>
-                        Adaptive Transformations for Climate Change and Disaster
-                        Risk Reduction Workshop
-                      </h2>
+                      <h2>{workshop.title}</h2>
                       <div class="venue">
                         <div>
                           <img src={location_icon} alt="icon" />
-                          <p>
-                            Department of Architecture and Planning, IIT Roorkee
-                          </p>
+                          <p>{workshop.venue}</p>
                         </div>
                         <div>
                           <img src={calendarIcon} alt="icon" />
-                          <p>10th February, 2024</p>
+                          <p>{workshop.date}</p>
                         </div>
                       </div>
-                      <NavLink to="/workshop">
+                      <NavLink to={`/workshops/workshop-detail/${workshop.id}`}>
                         {" "}
                         <button class="btn">View Details</button>
                       </NavLink>
                     </div>
-                  </li>
-
-                  <li class="worshop-detail-home">
-                    <div class="detail">
-                      <h2>
-                        Adaptive Transformations for Climate Change and Disaster
-                        Risk Reduction Workshop
-                      </h2>
-                      <div class="venue">
-                        <div>
-                          <img src={location_icon} alt="icon" />
-                          <p>
-                            Department of Architecture and Planning, IIT Roorkee
-                          </p>
-                        </div>
-                        <div>
-                          <img src={calendarIcon} alt="icon" />
-                          <p>10th February, 2024</p>
-                        </div>
-                      </div>
-                      <NavLink to="/workshop">
-                        {" "}
-                        <button class="btn">View Details</button>
-                      </NavLink>
-                    </div>
-                  </li>
-
-                  <li class="worshop-detail-home">
-                    <div class="detail">
-                      <h2>
-                        Adaptive Transformations for Climate Change and Disaster
-                        Risk Reduction Workshop
-                      </h2>
-                      <div class="venue">
-                        <div>
-                          <img src={location_icon} alt="icon" />
-                          <p>
-                            Department of Architecture and Planning, IIT Roorkee
-                          </p>
-                        </div>
-                        <div>
-                          <img src={calendarIcon} alt="icon" />
-                          <p>10th February, 2024</p>
-                        </div>
-                      </div>
-                      <NavLink to="/workshop">
-                        {" "}
-                        <button class="btn">View Details</button>
-                      </NavLink>
-                    </div>
-                  </li>
-                </ul>
-                <ul class="workshop-list">
-                  <li class="worshop-detail-home">
-                    <div class="detail">
-                      <h2>
-                        Adaptive Transformations for Climate Change and Disaster
-                        Risk Reduction Workshop
-                      </h2>
-                      <div class="venue">
-                        <div>
-                          <img src={location_icon} alt="icon" />
-                          <p>
-                            Department of Architecture and Planning, IIT Roorkee
-                          </p>
-                        </div>
-                        <div>
-                          <img src={calendarIcon} alt="icon" />
-                          <p>10th February, 2024</p>
-                        </div>
-                      </div>
-                      <button class="btn">View Details</button>
-                    </div>
-                  </li>
-
-                  <li class="worshop-detail-home">
-                    <div class="detail">
-                      <h2>
-                        Adaptive Transformations for Climate Change and Disaster
-                        Risk Reduction Workshop
-                      </h2>
-                      <div class="venue">
-                        <div>
-                          <img src={location_icon} alt="icon" />
-                          <p>
-                            Department of Architecture and Planning, IIT Roorkee
-                          </p>
-                        </div>
-                        <div>
-                          <img src={calendarIcon} alt="icon" />
-                          <p>10th February, 2024</p>
-                        </div>
-                      </div>
-                      <button class="btn">View Details</button>
-                    </div>
-                  </li>
-
-                  <li class="worshop-detail-home">
-                    <div class="detail">
-                      <h2>
-                        Adaptive Transformations for Climate Change and Disaster
-                        Risk Reduction Workshop
-                      </h2>
-                      <div class="venue">
-                        <div>
-                          <img src={location_icon} alt="icon" />
-                          <p>
-                            Department of Architecture and Planning, IIT Roorkee
-                          </p>
-                        </div>
-                        <div>
-                          <img src={calendarIcon} alt="icon" />
-                          <p>10th February, 2024</p>
-                        </div>
-                      </div>
-                      <button class="btn">View Details</button>
-                    </div>
-                  </li>
-                </ul>
+                  </div>
+                ))}
               </div>
-              <div class="dots">
+              <div class="dots swiper-pagination">
                 <img src={selected_dot} alt="" />
                 <img src={unselected_dot} alt="" />
               </div>

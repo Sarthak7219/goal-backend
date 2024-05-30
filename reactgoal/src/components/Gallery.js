@@ -30,8 +30,13 @@ function Gallery() {
         <div className="page-head">
           <h1>Photo Gallery</h1>
           <p>
-            <NavLink to="/">Home</NavLink> /{" "}
-            <NavLink to="/gallery">Gallery</NavLink>
+            <NavLink to="/" className="hero-link">
+              Home
+            </NavLink>{" "}
+            /{" "}
+            <NavLink to="/gallery" className="hero-link">
+              Gallery
+            </NavLink>
           </p>
         </div>
         <img src={iconImg} alt="" />

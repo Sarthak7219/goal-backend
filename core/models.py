@@ -31,6 +31,9 @@ class Workshop(models.Model):
     # images = 
     link = models.TextField(null=True, blank=True)
 
+    def __str__(self):
+        return self.title[:50]
+
     def get_all_workshop_images(self):
         images = self.images.all()
         return images
