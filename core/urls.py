@@ -4,8 +4,8 @@ from .views import *
 
 urlpatterns = [
     
-path('api/combined-data/', CombinedDataView.as_view(), name='combined-data'),
-    path('', home_view, name='home'),
+path('', CombinedDataView.as_view(), name='combined-data'),
+    # path('', home_view, name='home'),
   
     # path('about/', about_view, name='about' ),
     # path('case_studies/', case_studies_view, name='case_studies' ),

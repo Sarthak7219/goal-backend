@@ -44,7 +44,8 @@ ROOT_URLCONF = 'goal.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'reactgoal/build')],  # Path to React build directory
+        # 'DIRS': [os.path.join(BASE_DIR, 'reactgoal/build')],  # Path to React build directory
+        'DIRS': [],  
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,7 +85,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'reactgoal/build/static')]  # Path to React static files
+STATICFILES_DIRS = [BASE_DIR / 'static']  
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'reactgoal/build/static')]  # Path to React static files
 
 REST_FRAMEWORK = {'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny']}
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
