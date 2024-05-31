@@ -1,1 +1,11 @@
 images
+media
+public
+reactgoal
+static1
+templates
+.env
+db.sqlite3
+demo.html
+goal_home.html
+style.css
