@@ -14,6 +14,7 @@ SECRET_KEY = 'django-insecure-5=%cz$sq3gm)tv7+ombr9($gr@@%tnp$t36r7r#n)a-57t%otp
 
 DEBUG = os.environ.get('DEBUG')
 
+
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS_DEPLOY')
 
 INSTALLED_APPS = [
@@ -66,6 +67,8 @@ WSGI_APPLICATION = 'goal.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+database_url = os.environ.get('DATABASE_URL')
+print("DATABASE_URL:", database_url)
 
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
