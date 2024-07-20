@@ -1,7 +1,7 @@
 from django.db import models
 
 class Case_study(models.Model):
-    study_area = models.CharField(max_length=30)
+    study_area = models.CharField(max_length=100)
     description = models.TextField(null=True)
 
     def __str__(self): 
@@ -20,16 +20,24 @@ class Case_study(models.Model):
         return stories
     
 
+MODE_CHOICES = (
+    ('offline', 'Offline'),
+    ('online', 'Online')
+)
+
 class Workshop(models.Model):
     title = models.CharField(max_length=100)
     case_study = models.ForeignKey(Case_study, on_delete=models.CASCADE, null=True, blank=True, related_name='workshop')
     date = models.DateField()
-    upcoming = models.BooleanField()
+    
     venue = models.CharField(max_length=50)
     description = models.TextField()
-    coordinator = models.CharField(max_length=50)
-    # images = 
+    organised_by = models.CharField(max_length=150,null=True, blank=True)
+    
     link = models.TextField(null=True, blank=True)
+    speakers = models.CharField(max_length=200,null=True, blank=True)
+    key_takeaways = models.TextField(null=True, blank=True)
+    mode = models.CharField(max_length=30, choices=MODE_CHOICES, default='offline')
 
     def __str__(self):
         return self.title[:50]
