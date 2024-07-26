@@ -10,12 +10,10 @@ from .models import Case_study
 from .serializer import ResourcesSerializer
 from .serializer import WorkshopSerializer
 from .serializer import TeamMemberSerializer
-from .serializer import Case_studySerializer
+from .serializer import CaseStudySerializer
 from .models import *
 from .serializer import *
-
-
-
+from rest_framework import generics
 
 def home_view(request):
     context = {}
@@ -27,84 +25,36 @@ class CombinedDataView(APIView):
         team_members = TeamMember.objects.all()
         workshops = Workshop.objects.all()
         case_studies = Case_study.objects.all()
-        
+        image_case_study=Image_Case_Study.objects.all()
+        image_workshop=Image_Workshop.objects.all()
+
         resources_serializer = ResourcesSerializer(resources, many=True)
         team_members_serializer = TeamMemberSerializer(team_members, many=True)
         workshops_serializer = WorkshopSerializer(workshops, many=True)
-        case_studies_serializer = Case_studySerializer(case_studies, many=True)
-        
+        case_studies_serializer = CaseStudySerializer(case_studies, many=True)
+        image_case_study_serializer=Image_Case_studys_Serializer(image_case_study,many=True)
+        image_workshop_serializer=Image_Workshop_Serializer(image_workshop,many=True)
         data = {
             'resources': resources_serializer.data,
             'team_members': team_members_serializer.data,
             'workshops': workshops_serializer.data,
             'case_studies': case_studies_serializer.data,
+            'image_case_study':image_case_study_serializer.data,
+            'image_workshop':image_workshop_serializer.data
         }
         
         return Response(data)
 
-def about_view(request):
-    context = {}
-    return render(request, 'about.html', context)
+class ImageCaseStudyList(generics.ListAPIView):
+    queryset = Image_Case_Study.objects.all()
+    serializer_class = Image_Case_studys_Serializer
 
+    def get_serializer_context(self):
+        return {'request': self.request}
 
-def case_studies_view(request):
-    case_study_data = Case_study.objects.all()
-    context = {
-        'case_study_data':case_study_data,
-    }
-    return render(request, 'case_studies.html', context)
+class ImageWorkshopList(generics.ListAPIView):
+    queryset = Image_Workshop.objects.all()
+    serializer_class = Image_Workshop_Serializer
 
-def resources_view(request):
-    publications = Resources.objects.filter(category = 'publication')
-    training_manuals = Resources.objects.filter(category = 'training_manual')
-
-    context = {
-        'publications':publications,
-        'training_manuals':training_manuals,
-    }
-    return render(request, 'resources.html', context)
-
-
-def team_view(request):
-    
-    collaborators = TeamMember.objects.filter(category = 'collaborator')
-    research_associates = TeamMember.objects.filter(category = 'research_associate')
-    community_trainers = TeamMember.objects.filter(category = 'community_trainer')
-    interns = TeamMember.objects.filter(category = 'intern')
-    students = TeamMember.objects.filter(category = 'student')
-
-    context = {
-        'collaborators':collaborators,
-        'research_associates':research_associates,
-        'community_trainers':community_trainers,
-        'interns':interns,
-        'students':students,
-    }
-    return render(request, 'team.html', context)
-
-def gallery_view(request):
-    context = {}
-    return render(request, 'gallery.html', context)
-
-
-def workshop_detail_view(request):
-    context = {}
-    if request.method == 'GET':
-        workshop_id = request.GET.get('workshop_id')
-
-        try:
-            workshop = Workshop.objects.get(id = workshop_id)
-            context['workshop']=workshop
-        except:
-            return HttpResponse('Workshop not found!')
-   
-    return render(request, 'workshop_detail.html', context)
-
-
-def profile_detail_view(request):
-    context = {
-        # 'workshop_id':workshop_id
-    }
-    return render(request, 'profile_detail.html', context)
-
-
+    def get_serializer_context(self):
+        return {'request': self.request}
