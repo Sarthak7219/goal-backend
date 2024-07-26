@@ -4,6 +4,7 @@ from rest_framework import serializers
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Resources
+from django.http import FileResponse, Http404
 from .models import TeamMember
 from .models import Workshop
 from .models import Case_study
@@ -28,7 +29,7 @@ class CombinedDataView(APIView):
         image_case_study=Image_Case_Study.objects.all()
         image_workshop=Image_Workshop.objects.all()
 
-        resources_serializer = ResourcesSerializer(resources, many=True)
+        resources_serializer = ResourcesSerializer(resources, many=True, context={'request': self.request})
         team_members_serializer = TeamMemberSerializer(team_members, many=True)
         workshops_serializer = WorkshopSerializer(workshops, many=True)
         case_studies_serializer = CaseStudySerializer(case_studies, many=True)
@@ -58,3 +59,5 @@ class ImageWorkshopList(generics.ListAPIView):
 
     def get_serializer_context(self):
         return {'request': self.request}
+    
+

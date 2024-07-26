@@ -71,7 +71,8 @@ class Resources(models.Model):
     date_of_publishing = models.DateField()
     publisher = models.CharField(max_length=25)
     image = models.ImageField(upload_to='images/resource/')
-    link = models.URLField(max_length=250, null=True, default='#')
+    link = models.URLField(max_length=250, null=True, blank=True)
+    pdf = models.FileField(upload_to='pdfs/resources/', blank=True, null=True)
     
 
     def __str__(self): 
