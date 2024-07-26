@@ -17,32 +17,24 @@ class WorkshopSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class TeamMemberSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = TeamMember
         fields = '__all__'
 
-class Image_Case_studys_Serializer(serializers.ModelSerializer):
-    image_url = serializers.SerializerMethodField()
 
+class Image_Case_studys_Serializer(serializers.ModelSerializer):
     class Meta:
         model = Image_Case_Study
-        fields = ['id', 'image', 'case_study', 'image_url']
+        fields = '__all__'
 
-    def get_image_url(self, obj):
-        request = self.context.get('request')
-        if request is not None:
-            return request.build_absolute_uri(obj.image.url)
-        return obj.image.url
+  
 
 class Image_Workshop_Serializer(serializers.ModelSerializer):
-    image_url = serializers.SerializerMethodField()
+    
 
     class Meta:
         model = Image_Workshop
-        fields = ['id', 'image', 'workshop', 'image_url']
+        fields = '__all__'
 
-    def get_image_url(self, obj):
-        request = self.context.get('request')
-        if request is not None:
-            return request.build_absolute_uri(obj.image.url)
-        return obj.image.url
+    

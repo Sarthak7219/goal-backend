@@ -25,22 +25,21 @@ class CombinedDataView(APIView):
         team_members = TeamMember.objects.all()
         workshops = Workshop.objects.all()
         case_studies = Case_study.objects.all()
-        image_case_study=Image_Case_Study.objects.all()
-        image_workshop=Image_Workshop.objects.all()
+        
 
-        resources_serializer = ResourcesSerializer(resources, many=True)
-        team_members_serializer = TeamMemberSerializer(team_members, many=True)
+        # Serialize data with request context
+        resources_serializer = ResourcesSerializer(resources, many=True,context={'request': request})
+        team_members_serializer = TeamMemberSerializer(team_members, many=True, context={'request': request})
         workshops_serializer = WorkshopSerializer(workshops, many=True)
         case_studies_serializer = CaseStudySerializer(case_studies, many=True)
-        image_case_study_serializer=Image_Case_studys_Serializer(image_case_study,many=True)
-        image_workshop_serializer=Image_Workshop_Serializer(image_workshop,many=True)
+        
+
         data = {
             'resources': resources_serializer.data,
             'team_members': team_members_serializer.data,
             'workshops': workshops_serializer.data,
             'case_studies': case_studies_serializer.data,
-            'image_case_study':image_case_study_serializer.data,
-            'image_workshop':image_workshop_serializer.data
+            
         }
         
         return Response(data)
@@ -49,12 +48,7 @@ class ImageCaseStudyList(generics.ListAPIView):
     queryset = Image_Case_Study.objects.all()
     serializer_class = Image_Case_studys_Serializer
 
-    def get_serializer_context(self):
-        return {'request': self.request}
 
 class ImageWorkshopList(generics.ListAPIView):
     queryset = Image_Workshop.objects.all()
     serializer_class = Image_Workshop_Serializer
-
-    def get_serializer_context(self):
-        return {'request': self.request}
