@@ -98,7 +98,7 @@ class TeamMember(models.Model):
     contact = models.CharField(max_length=100)
     description = models.TextField()
     image = models.ImageField(upload_to='images/team_member/')
-
+    bg_image=models.ImageField(upload_to='images/team_member/',null=True,blank=True)
     
     def __str__(self): 
          return self.name + " ("+self.category+")"
@@ -106,10 +106,13 @@ class TeamMember(models.Model):
 class Image_Case_Study(models.Model):
     case_study=models.ForeignKey(Case_study,on_delete=models.CASCADE,related_name='images',blank=True,null=True)
     image=models.ImageField(upload_to='images/all/',default=True)
-
+    caption=models.TextField(max_length=30,blank=True,null=True)
+    date=models.DateTimeField(null=True,blank=True)
 class Image_Workshop(models.Model):
     workshop=models.ForeignKey(Workshop,on_delete=models.CASCADE,related_name='images',blank=True,null=True)
     image=models.ImageField(upload_to='images/all/',default=True)
+    caption=models.TextField(max_length=30,blank=True,null=True)
+    date=models.DateTimeField(null=True,blank=True)
 
 
 
