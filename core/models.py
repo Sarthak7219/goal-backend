@@ -1,7 +1,7 @@
 from django.db import models
 
 class Case_study(models.Model):
-    study_area = models.CharField(max_length=30)
+    study_area = models.CharField(max_length=130)
     description = models.TextField(null=True)
 
     def __str__(self): 
@@ -12,7 +12,7 @@ class Case_study(models.Model):
         return workshops
     
     def get_all_images(self):
-        images = self.image.all()
+        images = self.images.all()
         return images
     
     def get_all_stories(self):
@@ -93,6 +93,15 @@ class TeamMember(models.Model):
     
     def __str__(self): 
          return self.name + " ("+self.category+")"
+
+class Image_Case_Study(models.Model):
+    case_study=models.ForeignKey(Case_study,on_delete=models.CASCADE,related_name='images',blank=True,null=True)
+    image=models.ImageField(upload_to='images/all/',default=True)
+
+class Image_Workshop(models.Model):
+    workshop=models.ForeignKey(Workshop,on_delete=models.CASCADE,related_name='images',blank=True,null=True)
+    image=models.ImageField(upload_to='images/all/',default=True)
+
 
 
     
