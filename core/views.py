@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from .models import *
+from .serializer import *
 from rest_framework import generics
 from .models import Resources, TeamMember, Workshop, Case_study, Theme, CaseStudyThemeDescription, Image_Case_Study, Image_Workshop
 from .serializer import ResourcesSerializer, WorkshopSerializer, TeamMemberSerializer, CaseStudySerializer, ThemeSerializer, CaseStudyThemeDescriptionSerializer, ImageCaseStudySerializer, ImageWorkshopSerializer
@@ -15,16 +17,16 @@ class CombinedDataView(APIView):
         team_members = TeamMember.objects.all()
         workshops = Workshop.objects.all()
         case_studies = Case_study.objects.all()
-        themes = Theme.objects.all()
-        case_study_theme_descriptions = CaseStudyThemeDescription.objects.all()
+        stories = Stories.objects.all()
+        
 
         # Serialize data with request context
         resources_serializer = ResourcesSerializer(resources, many=True, context={'request': request})
         team_members_serializer = TeamMemberSerializer(team_members, many=True, context={'request': request})
-        workshops_serializer = WorkshopSerializer(workshops, many=True, context={'request': request})
-        case_studies_serializer = CaseStudySerializer(case_studies, many=True, context={'request': request})
-        themes_serializer = ThemeSerializer(themes, many=True, context={'request': request})
-        case_study_theme_descriptions_serializer = CaseStudyThemeDescriptionSerializer(case_study_theme_descriptions, many=True, context={'request': request})
+        workshops_serializer = WorkshopSerializer(workshops, many=True)
+        case_studies_serializer = CaseStudySerializer(case_studies, many=True)
+        stories_serializer = Stories_Serializer(stories, many=True)
+        
 
         data = {
             'resources': resources_serializer.data,

@@ -73,7 +73,8 @@ class Resources(models.Model):
     date_of_publishing = models.DateField()
     publisher = models.CharField(max_length=25)
     image = models.ImageField(upload_to='images/resource/')
-    link = models.URLField(max_length=250, null=True, default='#')
+    link = models.URLField(max_length=250, null=True, blank=True)
+    pdf = models.FileField(upload_to='pdfs/resources/', blank=True, null=True)
     
 
     def __str__(self): 
@@ -96,7 +97,7 @@ class TeamMember(models.Model):
     organisation = models.CharField(max_length=100)
     country = models.CharField(max_length=20)
     email = models.EmailField(null=True)
-    contact = models.CharField(max_length=100)
+    apn_profile_link =  models.TextField(null=True, blank=True)
     description = models.TextField()
     image = models.ImageField(upload_to='images/team_member/')
     bg_image=models.ImageField(upload_to='images/team_member/',null=True,blank=True)
@@ -131,6 +132,13 @@ class CaseStudyThemeDescription(models.Model):
 
     def __str__(self):
         return f"{self.case_study.study_area} - {self.theme.title}"
+
+
+class Stories(models.Model):
+    link = models.TextField(null=True, blank=True)
+    date=models.DateField(null=True,blank=True)
+    location = models.CharField(max_length=50, null=True, blank=True)
+    description = models.CharField(max_length=150, null=True, blank=True)
 
 
 

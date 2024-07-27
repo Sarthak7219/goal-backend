@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import *
+from .models import Resources, Case_study, Workshop, TeamMember, Image_Case_Study, Image_Workshop, Stories
 
 class ResourcesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -40,7 +40,24 @@ class TeamMemberSerializer(serializers.ModelSerializer):
         model = TeamMember
         fields = '__all__'
 
-class ThemeSerializer(serializers.ModelSerializer):
+
+class Image_Case_studys_Serializer(serializers.ModelSerializer):
+
     class Meta:
         model = Theme
         fields = '__all__'
+
+class Image_Workshop_Serializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Image_Workshop
+        fields = '__all__'
+
+
+class Stories_Serializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Stories
+        fields = '__all__'
+
+    
