@@ -1,17 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from rest_framework import serializers
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Resources
-from django.http import FileResponse, Http404
-from .models import TeamMember
-from .models import Workshop
-from .models import Case_study
-from .serializer import ResourcesSerializer
-from .serializer import WorkshopSerializer
-from .serializer import TeamMemberSerializer
-from .serializer import CaseStudySerializer
 from .models import *
 from .serializer import *
 from rest_framework import generics
@@ -26,6 +15,7 @@ class CombinedDataView(APIView):
         team_members = TeamMember.objects.all()
         workshops = Workshop.objects.all()
         case_studies = Case_study.objects.all()
+        stories = Stories.objects.all()
         
 
         # Serialize data with request context
@@ -33,6 +23,7 @@ class CombinedDataView(APIView):
         team_members_serializer = TeamMemberSerializer(team_members, many=True, context={'request': request})
         workshops_serializer = WorkshopSerializer(workshops, many=True)
         case_studies_serializer = CaseStudySerializer(case_studies, many=True)
+        stories_serializer = Stories_Serializer(stories, many=True)
         
 
         data = {
@@ -40,7 +31,7 @@ class CombinedDataView(APIView):
             'team_members': team_members_serializer.data,
             'workshops': workshops_serializer.data,
             'case_studies': case_studies_serializer.data,
-            
+            'stories': stories_serializer.data,
         }
         
         return Response(data)

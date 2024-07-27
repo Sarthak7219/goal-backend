@@ -95,7 +95,7 @@ class TeamMember(models.Model):
     organisation = models.CharField(max_length=100)
     country = models.CharField(max_length=20)
     email = models.EmailField(null=True)
-    contact = models.CharField(max_length=100)
+    apn_profile_link =  models.TextField(null=True, blank=True)
     description = models.TextField()
     image = models.ImageField(upload_to='images/team_member/')
     bg_image=models.ImageField(upload_to='images/team_member/',null=True,blank=True)
@@ -113,6 +113,13 @@ class Image_Workshop(models.Model):
     image=models.ImageField(upload_to='images/all/',default=True)
     caption=models.TextField(max_length=30,blank=True,null=True)
     date=models.DateTimeField(null=True,blank=True)
+
+
+class Stories(models.Model):
+    link = models.TextField(null=True, blank=True)
+    date=models.DateField(null=True,blank=True)
+    location = models.CharField(max_length=50, null=True, blank=True)
+    description = models.CharField(max_length=150, null=True, blank=True)
 
 
 
