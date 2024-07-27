@@ -62,7 +62,9 @@ class Workshop(models.Model):
 
 RESOURCES_CHOICES = (
     ('publication', 'Publication'),
-    ('training_manual', 'Training_Manual')
+    ('training_manual', 'Training_Manual'),
+    ('working_papers ', 'Working_Papers'),
+    ('policy_briefs', 'Policy_Briefs'),
 )
 
 class Resources(models.Model):
@@ -107,11 +109,28 @@ class Image_Case_Study(models.Model):
     image=models.ImageField(upload_to='images/all/',default=True)
     caption=models.TextField(max_length=30,blank=True,null=True)
     date=models.DateTimeField(null=True,blank=True)
+
+
 class Image_Workshop(models.Model):
     workshop=models.ForeignKey(Workshop,on_delete=models.CASCADE,related_name='images',blank=True,null=True)
     image=models.ImageField(upload_to='images/all/',default=True)
     caption=models.TextField(max_length=30,blank=True,null=True)
     date=models.DateTimeField(null=True,blank=True)
+
+class Theme(models.Model):
+    title=models.CharField(max_length=50)
+    desc=models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.title
+    
+class CaseStudyThemeDescription(models.Model):
+    case_study = models.ForeignKey(Case_study, on_delete=models.CASCADE, related_name='case_study_themes')
+    theme = models.ForeignKey(Theme, on_delete=models.CASCADE, related_name='case_study_themes')
+    description = models.TextField()
+
+    def __str__(self):
+        return f"{self.case_study.study_area} - {self.theme.title}"
 
 
 
