@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Resources, Case_study, Workshop, TeamMember, Image_Case_Study, Image_Workshop, Stories
+from .models import *
 
 class ResourcesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -42,4 +42,64 @@ class Stories_Serializer(serializers.ModelSerializer):
         model = Stories
         fields = '__all__'
 
+
+
+class CollaboratingInstituteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CollaboratingInstitute
+        fields = ['name', 'logo']  # Include fields you want to serialize
+
+
+class Homepage_Serializer(serializers.ModelSerializer):
+    institutes = CollaboratingInstituteSerializer(many=True, read_only=True)  # Use nested serializer
+
+    class Meta:
+        model = HomePage
+        fields = '__all__'
+
+
+class About_Serializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = About
+        fields = '__all__'
     
+
+class CaseStudyThemeDescriptionSerializer(serializers.ModelSerializer):
+    case_study_title = serializers.SerializerMethodField()
+
+    class Meta:
+        model = CaseStudyThemeDescription
+        fields = '__all__'
+
+    def get_case_study_title(self, obj):
+        return obj.case_study.study_area  # Assuming your Case_study model has a title field
+    
+
+class CaseStudyThemeImageSerializer(serializers.ModelSerializer):
+    case_study_title = serializers.SerializerMethodField()
+
+    class Meta:
+        model = CaseStudyThemeImage
+        fields = '__all__'
+
+    def get_case_study_title(self, obj):
+        return obj.case_study.study_area  # Assuming your Case_study model has a title field
+
+
+
+class Theme_Serializer(serializers.ModelSerializer):
+
+    case_studies_description = CaseStudyThemeDescriptionSerializer(
+        source='case_study_themes', many=True, read_only=True
+    )
+
+    case_studies_images = CaseStudyThemeImageSerializer(
+        source='case_study_themes_image', many=True, read_only=True
+    )
+    
+    class Meta:
+        model = Theme
+        fields = '__all__'
+
+

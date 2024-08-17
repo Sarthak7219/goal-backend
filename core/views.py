@@ -16,6 +16,10 @@ class CombinedDataView(APIView):
         workshops = Workshop.objects.all()
         case_studies = Case_study.objects.all()
         stories = Stories.objects.all()
+        homepage_data = HomePage.objects.first()
+        about_data = About.objects.first()
+       
+
         
 
         # Serialize data with request context
@@ -24,6 +28,9 @@ class CombinedDataView(APIView):
         workshops_serializer = WorkshopSerializer(workshops, many=True)
         case_studies_serializer = CaseStudySerializer(case_studies, many=True)
         stories_serializer = Stories_Serializer(stories, many=True)
+        homepage_serializer = Homepage_Serializer(homepage_data, context={'request': request})
+        about_serializer = About_Serializer(about_data, context={'request': request})
+        
         
 
         data = {
@@ -32,6 +39,9 @@ class CombinedDataView(APIView):
             'workshops': workshops_serializer.data,
             'case_studies': case_studies_serializer.data,
             'stories': stories_serializer.data,
+            'homepage_data': homepage_serializer.data,
+            'about_data': about_serializer.data,
+       
         }
         
         return Response(data)
@@ -44,3 +54,8 @@ class ImageCaseStudyList(generics.ListAPIView):
 class ImageWorkshopList(generics.ListAPIView):
     queryset = Image_Workshop.objects.all()
     serializer_class = Image_Workshop_Serializer
+
+
+class ThemeListCreateAPIView(generics.ListAPIView):
+    queryset = Theme.objects.all()
+    serializer_class = Theme_Serializer
