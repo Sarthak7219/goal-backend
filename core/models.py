@@ -129,7 +129,7 @@ class CaseStudyThemeDescription(models.Model):
     case_study = models.ForeignKey(Case_study, on_delete=models.CASCADE, related_name='case_study_themes')
     theme = models.ForeignKey(Theme, on_delete=models.CASCADE, related_name='case_study_themes')
     description = models.TextField()
-
+    
     def __str__(self):
         return f"{self.case_study.study_area} - {self.theme.title}"
 
@@ -139,10 +139,3 @@ class Stories(models.Model):
     date=models.DateField(null=True,blank=True)
     location = models.CharField(max_length=50, null=True, blank=True)
     description = models.CharField(max_length=150, null=True, blank=True)
-
-
-
-    
-
-
-

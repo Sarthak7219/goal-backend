@@ -18,16 +18,16 @@ class CombinedDataView(APIView):
         workshops = Workshop.objects.all()
         case_studies = Case_study.objects.all()
         stories = Stories.objects.all()
-        
-
+        themes=Theme.objects.all()
+        case_study_theme_descriptions=CaseStudyThemeDescription.objects.all()
         # Serialize data with request context
         resources_serializer = ResourcesSerializer(resources, many=True, context={'request': request})
         team_members_serializer = TeamMemberSerializer(team_members, many=True, context={'request': request})
         workshops_serializer = WorkshopSerializer(workshops, many=True)
         case_studies_serializer = CaseStudySerializer(case_studies, many=True)
         stories_serializer = Stories_Serializer(stories, many=True)
-        
-
+        themes_serializer=ThemeSerializer(themes,many=True)
+        case_study_theme_descriptions_serializer=CaseStudyThemeDescriptionSerializer(case_study_theme_descriptions,many=True)
         data = {
             'resources': resources_serializer.data,
             'team_members': team_members_serializer.data,
