@@ -92,13 +92,13 @@ TEAM_MEMBER_CHOICES = (
 class TeamMember(models.Model):
     name = models.CharField(max_length=50)
     category = models.CharField(max_length=30, choices=TEAM_MEMBER_CHOICES)
-    position = models.CharField(max_length=40)
+    position = models.CharField(max_length=40,null=True,blank=True)
     organisation = models.CharField(max_length=100)
     country = models.CharField(max_length=20)
     email = models.EmailField(null=True)
     apn_profile_link =  models.TextField(null=True, blank=True)
     description = models.TextField()
-    image = models.ImageField(upload_to='images/team_member/')
+    image = models.ImageField(upload_to='images/team_member/', default='images/team_member/default.jpg')
     bg_image=models.ImageField(upload_to='images/team_member/',null=True,blank=True)
     website_link =  models.TextField(null=True, blank=True)
     
