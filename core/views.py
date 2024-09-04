@@ -4,8 +4,8 @@ from rest_framework.response import Response
 from .models import *
 from .serializer import *
 from rest_framework import generics
-from .models import Resources, TeamMember, Workshop, Case_study, Theme, CaseStudyThemeDescription, Image_Case_Study, Image_Workshop
-from .serializer import ResourcesSerializer, WorkshopSerializer, TeamMemberSerializer, CaseStudySerializer, ThemeSerializer, CaseStudyThemeDescriptionSerializer, ImageCaseStudySerializer, ImageWorkshopSerializer
+from .models import *
+from .serializer import *
 
 def home_view(request):
     context = {}
@@ -18,23 +18,32 @@ class CombinedDataView(APIView):
         workshops = Workshop.objects.all()
         case_studies = Case_study.objects.all()
         stories = Stories.objects.all()
-        themes=Theme.objects.all()
-        case_study_theme_descriptions=CaseStudyThemeDescription.objects.all()
+        homepage_data = HomePage.objects.first()
+        about_data = About.objects.first()
+       
+
+        
+
         # Serialize data with request context
         resources_serializer = ResourcesSerializer(resources, many=True, context={'request': request})
         team_members_serializer = TeamMemberSerializer(team_members, many=True, context={'request': request})
         workshops_serializer = WorkshopSerializer(workshops, many=True)
         case_studies_serializer = CaseStudySerializer(case_studies, many=True)
         stories_serializer = Stories_Serializer(stories, many=True)
-        themes_serializer=ThemeSerializer(themes,many=True)
-        case_study_theme_descriptions_serializer=CaseStudyThemeDescriptionSerializer(case_study_theme_descriptions,many=True)
+        homepage_serializer = Homepage_Serializer(homepage_data, context={'request': request})
+        about_serializer = About_Serializer(about_data, context={'request': request})
+        
+        
+
         data = {
             'resources': resources_serializer.data,
             'team_members': team_members_serializer.data,
             'workshops': workshops_serializer.data,
             'case_studies': case_studies_serializer.data,
-            'themes': themes_serializer.data,
-            'case_study_theme_descriptions': case_study_theme_descriptions_serializer.data,
+            'stories': stories_serializer.data,
+            'homepage_data': homepage_serializer.data,
+            'about_data': about_serializer.data,
+       
         }
 
         return Response(data)
@@ -45,4 +54,9 @@ class ImageCaseStudyList(generics.ListAPIView):
 
 class ImageWorkshopList(generics.ListAPIView):
     queryset = Image_Workshop.objects.all()
-    serializer_class = ImageWorkshopSerializer
+    serializer_class = Image_Workshop_Serializer
+
+
+class ThemeListCreateAPIView(generics.ListAPIView):
+    queryset = Theme.objects.all()
+    serializer_class = Theme_Serializer

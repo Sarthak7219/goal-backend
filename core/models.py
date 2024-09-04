@@ -1,8 +1,10 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
 class Case_study(models.Model):
     study_area = models.CharField(max_length=130)
     description = models.TextField(null=True)
+    country = models.CharField(max_length=50, null=True)
 
     def __str__(self): 
          return "Case study ("+self.study_area+")"
@@ -62,9 +64,7 @@ class Workshop(models.Model):
 
 RESOURCES_CHOICES = (
     ('publication', 'Publication'),
-    ('training_manual', 'Training_Manual'),
-    ('working_papers ', 'Working_Papers'),
-    ('policy_briefs', 'Policy_Briefs'),
+    ('training_tool', 'Training Tool')
 )
 
 class Resources(models.Model):
@@ -72,7 +72,6 @@ class Resources(models.Model):
     category = models.CharField(max_length=30, choices=RESOURCES_CHOICES, default='publication')
     date_of_publishing = models.DateField()
     publisher = models.CharField(max_length=25)
-    image = models.ImageField(upload_to='images/resource/')
     link = models.URLField(max_length=250, null=True, blank=True)
     pdf = models.FileField(upload_to='pdfs/resources/', blank=True, null=True)
     
@@ -101,26 +100,79 @@ class TeamMember(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='images/team_member/')
     bg_image=models.ImageField(upload_to='images/team_member/',null=True,blank=True)
+    website_link =  models.TextField(null=True, blank=True)
     
     def __str__(self): 
          return self.name + " ("+self.category+")"
 
 class Image_Case_Study(models.Model):
     case_study=models.ForeignKey(Case_study,on_delete=models.CASCADE,related_name='images',blank=True,null=True)
-    image=models.ImageField(upload_to='images/all/',default=True)
+    image=models.ImageField(upload_to='images/case_study/',default=True)
     caption=models.TextField(max_length=30,blank=True,null=True)
-    date=models.DateTimeField(null=True,blank=True)
+    date=models.DateField(null=True,blank=True)
 
 
 class Image_Workshop(models.Model):
     workshop=models.ForeignKey(Workshop,on_delete=models.CASCADE,related_name='images',blank=True,null=True)
-    image=models.ImageField(upload_to='images/all/',default=True)
+    image=models.ImageField(upload_to='images/workshop/',default=True)
     caption=models.TextField(max_length=30,blank=True,null=True)
-    date=models.DateTimeField(null=True,blank=True)
+    date=models.DateField(null=True,blank=True)
+
+
+class Stories(models.Model):
+    link = models.TextField(null=True, blank=True)
+    date=models.DateField(null=True,blank=True)
+    location = models.CharField(max_length=50, null=True, blank=True)
+    description = models.CharField(max_length=150, null=True, blank=True)
+
+
+
+class HomePage(models.Model):
+    map_image = models.ImageField(upload_to='images/general/')
+
+    def save(self, *args, **kwargs):
+        if not self.pk and HomePage.objects.exists():
+            raise ValidationError('There can only be one HomePage instance')
+        return super(HomePage, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return "Home Page Content"
+
+class CollaboratingInstitute(models.Model):
+    name = models.CharField(max_length=255)
+    logo = models.ImageField(upload_to='images/logos/')
+    homepage = models.ForeignKey(HomePage, on_delete=models.CASCADE, related_name='institutes')
+    
+
+    def __str__(self):
+        return self.name
+
+
+class About(models.Model):
+    abstract = models.TextField()
+    description = models.TextField()
+    img1 = models.ImageField(null=True, upload_to='images/about/')
+    img2 = models.ImageField(null=True, upload_to='images/about/')
+    img3 = models.ImageField(null=True, upload_to='images/about/')
+    img4 = models.ImageField(null=True, upload_to='images/about/')
+
+    def __str__(self):
+        return "About Page"
+
+    def save(self, *args, **kwargs):
+        if not self.pk and About.objects.exists():
+            raise ValueError('Only one About instance is allowed.')
+        return super().save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = "About"
+        verbose_name_plural = "About"
+
+
 
 class Theme(models.Model):
-    title=models.CharField(max_length=50)
-    desc=models.CharField(max_length=100)
+    title=models.CharField(max_length=100)
+    description = models.TextField(null=True)
 
     def __str__(self):
         return self.title
@@ -133,9 +185,22 @@ class CaseStudyThemeDescription(models.Model):
     def __str__(self):
         return f"{self.case_study.study_area} - {self.theme.title}"
 
+# class Image_Theme(models.Model):
+#     theme_case_study = models.ForeignKey(CaseStudyThemeDescription, on_delete=models.CASCADE)
+#     image=models.ImageField(upload_to='images/theme/',default=True)
+#     caption=models.TextField(max_length=30,blank=True,null=True)
+#     date=models.DateField(null=True,blank=True)
 
-class Stories(models.Model):
-    link = models.TextField(null=True, blank=True)
+class CaseStudyThemeImage(models.Model):
+    case_study = models.ForeignKey(Case_study, on_delete=models.CASCADE, related_name='case_study_themes_image')
+    theme = models.ForeignKey(Theme, on_delete=models.CASCADE, related_name='case_study_themes_image')
+    image=models.ImageField(upload_to='images/theme/',default=True)
+    caption=models.TextField(max_length=30,blank=True,null=True)
     date=models.DateField(null=True,blank=True)
-    location = models.CharField(max_length=50, null=True, blank=True)
-    description = models.CharField(max_length=150, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.case_study.study_area} - {self.theme.title}"
+    
+
+
+
