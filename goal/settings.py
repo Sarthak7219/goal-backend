@@ -1,10 +1,7 @@
 from pathlib import Path
 import os
-import environ
 import dj_database_url
-
-env = environ.Env()
-environ.Env.read_env()
+from decouple import config
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -12,7 +9,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-5=%cz$sq3gm)tv7+ombr9($gr@@%tnp$t36r7r#n)a-57t%otp'
 
 
-DEBUG = os.environ.get('DEBUG')
+# DEBUG = os.environ.get('DEBUG')
+DEBUG = config('DEBUG')
 
 
 
@@ -77,7 +75,7 @@ WSGI_APPLICATION = 'goal.wsgi.application'
 # print("DATABASE_URL:", database_url)
 
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    'default': dj_database_url.parse(config('DATABASE_URL'))
 }
 
 AUTH_PASSWORD_VALIDATORS = [
