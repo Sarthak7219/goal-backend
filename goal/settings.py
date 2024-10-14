@@ -31,7 +31,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -65,12 +65,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'goal.wsgi.application'
 
-# DATABASES = {              #---> db.sqlite
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'goaldb',
+        'USER': 'goal',
+        'PASSWORD': 'Goal@123',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+
 # database_url = os.environ.get('DATABASE_URL')
 # print("DATABASE_URL:", database_url)
 
@@ -119,3 +124,12 @@ CORS_ALLOW_CREDENTIALS = True
 # CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS_DEPLOY')
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
+
+# Email settings
+EMAIL_BACKEND = config('EMAIL_BACKEND')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
