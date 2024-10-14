@@ -65,15 +65,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'goal.wsgi.application'
 
-DATABASES = {              #---> db.sqlite
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'goal_test',
-        'USER': 'root',
-        'HOST': '13.232.126.238',
-        'PASSWORD': 'Goal-Database23!Xyz$',
+        'NAME': 'goaldb',
+        'USER': 'goal',
+        'PASSWORD': 'Goal@123',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
 }
-}
+
 # database_url = os.environ.get('DATABASE_URL')
 # print("DATABASE_URL:", database_url)
 
