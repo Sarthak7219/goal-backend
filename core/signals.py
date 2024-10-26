@@ -17,7 +17,7 @@ def send_email_on_save(sender, instance, created, **kwargs):
         if sender in app_models:
             subject = f'A {sender.__name__} object was created' if created else f'A {sender.__name__} object was updated'
             message = f'Details of the new/updated object:\n\n{instance}'
-            recipient_list = ['sarthakrangari788@gmail.com']  # email list here
+            recipient_list = [settings.RECEIVER_EMAIL]  # email list here
             
             send_mail(
                 subject,
