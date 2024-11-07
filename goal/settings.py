@@ -65,6 +65,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'goal.wsgi.application'
 
+
+# database_url = os.environ.get('DATABASE_URL')
+# print("DATABASE_URL:", database_url)
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -76,12 +80,6 @@ DATABASES = {
     }
 }
 
-# database_url = os.environ.get('DATABASE_URL')
-# print("DATABASE_URL:", database_url)
-
-DATABASES = {
-    'default': dj_database_url.parse(config('DATABASE_URL'))
-}
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
@@ -93,7 +91,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
-USE_TZ = True
+SE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -118,10 +116,11 @@ CORS_ALLOW_CREDENTIALS = True
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
 # Email settings
-EMAIL_BACKEND = config('EMAIL_BACKEND')
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_PORT = config('EMAIL_PORT', cast=int)
-EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+# EMAIL_BACKEND = config('EMAIL_BACKEND')
+# EMAIL_HOST = config('EMAIL_HOST')
+# EMAIL_PORT = config('EMAIL_PORT', cast=int)
+# EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER')     # ------> Actual sender's email
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+# DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')   # ------> Apperared sender's email
+# RECEIVER_EMAIL = config('RECEIVER_EMAIL') # ------> Actual receiver's email
