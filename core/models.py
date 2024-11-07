@@ -32,7 +32,6 @@ class Workshop(models.Model):
     title = models.CharField(max_length=1000)
     case_study = models.ForeignKey(Case_study, on_delete=models.CASCADE, null=True, blank=True, related_name='workshop')
     date = models.DateField()
-    
     venue = models.CharField(max_length=500)
     description = models.TextField()
     organised_by = models.CharField(max_length=150,null=True, blank=True)
