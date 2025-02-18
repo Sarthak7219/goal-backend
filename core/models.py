@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
-
+import os
 class Case_study(models.Model):
     study_area = models.CharField(max_length=130)
     description = models.TextField(null=True)
@@ -32,7 +32,6 @@ class Workshop(models.Model):
     title = models.CharField(max_length=1000)
     case_study = models.ForeignKey(Case_study, on_delete=models.CASCADE, null=True, blank=True, related_name='workshop')
     date = models.DateField()
-    
     venue = models.CharField(max_length=500)
     description = models.TextField()
     organised_by = models.CharField(max_length=150,null=True, blank=True)
@@ -80,7 +79,11 @@ class Resources(models.Model):
 
     def __str__(self): 
          return self.category
-    
+    def delete(self, *args, **kwargs):
+        if self.pdf:
+            if os.path.isfile(self.pdf.path):
+                os.remove(self.pdf.path)
+        super().delete(*args, **kwargs)
 
 
 TEAM_MEMBER_CHOICES = (
