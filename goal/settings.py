@@ -99,7 +99,7 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'reactgoal/build/static')]  # Path to React static files
 
 REST_FRAMEWORK = {'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny']}
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT ='/mnt/data/media'
 MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
