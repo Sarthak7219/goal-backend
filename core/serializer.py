@@ -197,7 +197,8 @@ class CaseStudyDetailSerializer(serializers.ModelSerializer):
 
     def get_related_workshops(self, obj):
         workshops = obj.get_all_workshops()
-        serializer = WorkshopsSerializer(workshops, many=True)
+        request = self.context.get('request')
+        serializer = WorkshopsSerializer(workshops, many=True, context={'request': request})
         return serializer.data
     
     def get_photos(self, obj):
