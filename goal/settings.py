@@ -69,14 +69,20 @@ WSGI_APPLICATION = 'goal.wsgi.application'
 # database_url = os.environ.get('DATABASE_URL')
 # print("DATABASE_URL:", database_url)
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'goaldb',
+#         'USER': 'goal',
+#         'PASSWORD': 'Goal@123',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'goaldb',
-        'USER': 'goal',
-        'PASSWORD': 'Goal@123',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',  # Use SQLite as the database engine
+        'NAME': BASE_DIR / 'db.sqlite3',          # Path to the SQLite database file
     }
 }
 
