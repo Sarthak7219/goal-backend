@@ -5,22 +5,14 @@ class Case_study(models.Model):
     study_area = models.CharField(max_length=130)
     description = models.TextField(null=True)
     country = models.CharField(max_length=50, null=True)
-
+    thumbnail = models.ImageField(upload_to='images/case_study/thumbnails/', null=True, blank=True)
     def __str__(self): 
          return "Case study ("+self.study_area+")"
 
     def get_all_workshops(self):
         workshops = self.workshop.all()
         return workshops
-    
-    def get_all_images(self):
-        images = self.images.all()
-        return images
-    
-    def get_all_stories(self):
-        stories = self.story.all()
-        return stories
-    
+        
 
 MODE_CHOICES = (
     ('offline', 'Offline'),
@@ -35,18 +27,14 @@ class Workshop(models.Model):
     venue = models.CharField(max_length=500)
     description = models.TextField()
     organised_by = models.CharField(max_length=150,null=True, blank=True)
-    
     link = models.TextField(null=True, blank=True)
     speakers = models.CharField(max_length=200,null=True, blank=True)
     key_takeaways = models.TextField(null=True, blank=True)
     mode = models.CharField(max_length=30, choices=MODE_CHOICES, default='offline')
+    thumbnail = models.ImageField(upload_to='images/workshop/thumbnails/', null=True, blank=True)
 
     def __str__(self):
         return self.title[:50]
-
-    def get_all_workshop_images(self):
-        images = self.images.all()
-        return images
     
     def get_workshop_case_study(self):
         case_study = self.case_study
@@ -85,7 +73,6 @@ class Resources(models.Model):
                 os.remove(self.pdf.path)
         super().delete(*args, **kwargs)
 
-
 TEAM_MEMBER_CHOICES = (
     ('collaborator', 'Collaborator'),
     ('research_associate', 'Research_Associate'),
@@ -109,7 +96,7 @@ class TeamMember(models.Model):
     
     def __str__(self): 
          return self.name + " ("+self.category+")"
-
+    
 class Image_Case_Study(models.Model):
     case_study=models.ForeignKey(Case_study,on_delete=models.CASCADE,related_name='images',blank=True,null=True)
     image=models.ImageField(upload_to='images/case_study/',default=True)
@@ -173,12 +160,9 @@ class About(models.Model):
         verbose_name = "About"
         verbose_name_plural = "About"
 
-
-
 class Theme(models.Model):
     title=models.CharField(max_length=100)
     description = models.TextField(null=True)
-
     def __str__(self):
         return self.title
     
@@ -190,11 +174,6 @@ class CaseStudyThemeDescription(models.Model):
     def __str__(self):
         return f"{self.case_study.study_area} - {self.theme.title}"
 
-# class Image_Theme(models.Model):
-#     theme_case_study = models.ForeignKey(CaseStudyThemeDescription, on_delete=models.CASCADE)
-#     image=models.ImageField(upload_to='images/theme/',default=True)
-#     caption=models.TextField(max_length=30,blank=True,null=True)
-#     date=models.DateField(null=True,blank=True)
 
 class CaseStudyThemeImage(models.Model):
     case_study = models.ForeignKey(Case_study, on_delete=models.CASCADE, related_name='case_study_themes_image')

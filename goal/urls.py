@@ -9,8 +9,7 @@ from django.conf.urls.static import static
 # from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # re_path(r'^.*$', TemplateView.as_view(template_name='index.html')),
-    path('', include('core.urls')),
+    path('api/', include('core.urls')),
 ]
 
 

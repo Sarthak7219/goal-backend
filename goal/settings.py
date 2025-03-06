@@ -1,6 +1,5 @@
 from pathlib import Path
 import os
-import dj_database_url
 from decouple import config
 
 
@@ -49,7 +48,6 @@ ROOT_URLCONF = 'goal.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # 'DIRS': [os.path.join(BASE_DIR, 'reactgoal/build')],  # Path to React build directory
         'DIRS': [],  
         'APP_DIRS': True,
         'OPTIONS': {
@@ -66,29 +64,24 @@ TEMPLATES = [
 WSGI_APPLICATION = 'goal.wsgi.application'
 
 
-# database_url = os.environ.get('DATABASE_URL')
-# print("DATABASE_URL:", database_url)
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'goaldb',
-#         'USER': 'goal',
-#         'PASSWORD': 'Goal@123',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
-#     }
-# }
-
-# settings.py
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',  # This will create the SQLite database file in the base directory of your project
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'goaldb',
+        'USER': 'goal',
+        'PASSWORD': 'Goal@123',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',  # This will create the SQLite database file in the base directory of your project
+#     }
+# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
@@ -105,7 +98,6 @@ SE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [BASE_DIR / 'static']  
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'reactgoal/build/static')]  # Path to React static files
 
 REST_FRAMEWORK = {'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny']}
 MEDIA_ROOT ='/mnt/data/media'
