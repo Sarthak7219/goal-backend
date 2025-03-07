@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import *
+import re
 
 
 class CollaboratingInstituteSerializer(serializers.ModelSerializer):
@@ -86,9 +87,23 @@ class About_Serializer(serializers.ModelSerializer):
         fields = ['abstract', 'description', 'img1', 'img2', 'img3', 'img4']
     
 class Stories_Serializer(serializers.ModelSerializer):
+    thumbnail = serializers.SerializerMethodField()
     class Meta:
         model = Stories
-        fields = ['description', 'location', 'date', 'link']
+        fields = ['description', 'location', 'date', 'link', 'thumbnail']
+
+    def get_thumbnail(self, obj):
+        if obj.link:
+            pattern = r"(?:v=|\/)([0-9A-Za-z_-]{11}).*"
+            match = re.search(pattern, obj.link)
+            if match:
+                video_id = match.group(1)
+                thumbnail_url = f"https://img.youtube.com/vi/{video_id}/maxresdefault.jpg"
+                return thumbnail_url
+            else:
+                return None
+        else:
+            return None
 
 class TeamMembersSerializer(serializers.ModelSerializer):
     image = serializers.SerializerMethodField()
