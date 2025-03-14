@@ -2,20 +2,13 @@ from pathlib import Path
 import os
 from decouple import config
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-5=%cz$sq3gm)tv7+ombr9($gr@@%tnp$t36r7r#n)a-57t%otp'
 
+DEBUG = config("DEBUG", default=True)
 
-# DEBUG = os.environ.get('DEBUG')
-DEBUG = config('DEBUG')
-
-
-
-# ALLOWED_HOSTS = env.list('ALLOWED_HOSTS_DEPLOY')
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = config("ALLOWED_HOSTS_DEPLOY", default="localhost").split(",")
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -63,25 +56,26 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'goal.wsgi.application'
 
+ENVIRONMENT = os.getenv('DJANGO_ENV', 'development')
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'goaldb',
-#         'USER': 'goal',
-#         'PASSWORD': 'Goal@123',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
-#     }
-# }
-
-
-DATABASES = {
+if ENVIRONMENT == 'production':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'goaldb',
+            'USER': 'goal',
+            'PASSWORD': 'Goal@123',
+            'HOST': 'localhost',
+            'PORT': '3306',
+        }
+    }
+else:
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',  # This will create the SQLite database file in the base directory of your project
+        'NAME': BASE_DIR / 'db.sqlite3', 
+        }
     }
-}
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
@@ -104,15 +98,9 @@ MEDIA_ROOT ='/mnt/data/media'
 MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-    
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS  = config("CORS_ALLOWED_ORIGINS", default="http://localhost:3000").split(",")
 CORS_ALLOW_CREDENTIALS = True
-
-# CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS_DEPLOY')
-# CORS_ALLOWED_WHITELIST = env.list('CORS_ALLOWED_WHITELIST_DEPLOY')
-
-# CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS_DEPLOY')
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
