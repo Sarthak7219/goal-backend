@@ -1,6 +1,10 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 import os
+from PIL import Image
+from io import BytesIO
+from django.core.files.base import ContentFile
+
 class Case_study(models.Model):
     study_area = models.CharField(max_length=130)
     description = models.TextField(null=True)
@@ -13,6 +17,20 @@ class Case_study(models.Model):
         workshops = self.workshop.all()
         return workshops
         
+    #Optimize before saving
+    def save(self, *args, **kwargs):
+        if self.thumbnail:
+            img = Image.open(self.thumbnail)
+            img_format = img.format 
+            
+            max_size = (800, 800) 
+            img.thumbnail(max_size)
+
+            img_io = BytesIO()
+            img.save(img_io, format=img_format, quality=95, optimize=True)
+            self.thumbnail = ContentFile(img_io.getvalue(), name=self.thumbnail.name)
+        super().save(*args, **kwargs)
+
 
 MODE_CHOICES = (
     ('offline', 'Offline'),
@@ -44,6 +62,19 @@ class Workshop(models.Model):
         case_study = self.case_study
         workshops = case_study.get_all_workshops
         return workshops
+    
+    def save(self, *args, **kwargs):
+        if self.thumbnail:
+            img = Image.open(self.thumbnail)
+            img_format = img.format 
+            
+            max_size = (800, 800) 
+            img.thumbnail(max_size)
+
+            img_io = BytesIO()
+            img.save(img_io, format=img_format, quality=95, optimize=True)
+            self.thumbnail = ContentFile(img_io.getvalue(), name=self.thumbnail.name)
+        super().save(*args, **kwargs)
     
 
 # class Image(models.Model):
@@ -97,11 +128,39 @@ class TeamMember(models.Model):
     def __str__(self): 
          return self.name + " ("+self.category+")"
     
+    def save(self, *args, **kwargs):
+        if self.image:
+            img = Image.open(self.image)
+            img_format = img.format  
+            
+            max_size = (800, 800)  
+            img.thumbnail(max_size)
+
+            img_io = BytesIO()
+            img.save(img_io, format=img_format, quality=95, optimize=True)
+            self.image = ContentFile(img_io.getvalue(), name=self.image.name)
+
+        super().save(*args, **kwargs)
+    
 class Image_Case_Study(models.Model):
     case_study=models.ForeignKey(Case_study,on_delete=models.CASCADE,related_name='images',blank=True,null=True)
     image=models.ImageField(upload_to='images/case_study/',default=True)
     caption=models.TextField(max_length=30,blank=True,null=True)
     date=models.DateField(null=True,blank=True)
+
+    def save(self, *args, **kwargs):
+        if self.image:
+            img = Image.open(self.image)
+            img_format = img.format  
+            
+            max_size = (800, 800)  
+            img.thumbnail(max_size)
+
+            img_io = BytesIO()
+            img.save(img_io, format=img_format, quality=95, optimize=True)
+            self.image = ContentFile(img_io.getvalue(), name=self.image.name)
+
+        super().save(*args, **kwargs)
 
 
 class Image_Workshop(models.Model):
@@ -109,6 +168,20 @@ class Image_Workshop(models.Model):
     image=models.ImageField(upload_to='images/workshop/',default=True)
     caption=models.TextField(max_length=30,blank=True,null=True)
     date=models.DateField(null=True,blank=True)
+
+    def save(self, *args, **kwargs):
+        if self.image:
+            img = Image.open(self.image)
+            img_format = img.format  
+            
+            max_size = (800, 800)  
+            img.thumbnail(max_size)
+
+            img_io = BytesIO()
+            img.save(img_io, format=img_format, quality=95, optimize=True)
+            self.image = ContentFile(img_io.getvalue(), name=self.image.name)
+
+        super().save(*args, **kwargs)
 
 
 class Stories(models.Model):
@@ -184,6 +257,20 @@ class CaseStudyThemeImage(models.Model):
 
     def __str__(self):
         return f"{self.case_study.study_area} - {self.theme.title}"
+    
+    def save(self, *args, **kwargs):
+        if self.image:
+            img = Image.open(self.image)
+            img_format = img.format  
+            
+            max_size = (800, 800)  
+            img.thumbnail(max_size)
+
+            img_io = BytesIO()
+            img.save(img_io, format=img_format, quality=95, optimize=True)
+            self.image = ContentFile(img_io.getvalue(), name=self.image.name)
+
+        super().save(*args, **kwargs)
     
 
 
