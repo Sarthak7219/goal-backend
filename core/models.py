@@ -23,8 +23,7 @@ class Case_study(models.Model):
             img = Image.open(self.thumbnail)
             img_format = img.format 
             
-            max_size = (800, 800) 
-            img.thumbnail(max_size)
+            img.thumbnail((800, 800), Image.LANCZOS)
 
             img_io = BytesIO()
             img.save(img_io, format=img_format, quality=95, optimize=True)
@@ -68,8 +67,7 @@ class Workshop(models.Model):
             img = Image.open(self.thumbnail)
             img_format = img.format 
             
-            max_size = (800, 800) 
-            img.thumbnail(max_size)
+            img.thumbnail((800, 800), Image.LANCZOS)
 
             img_io = BytesIO()
             img.save(img_io, format=img_format, quality=95, optimize=True)
@@ -133,8 +131,7 @@ class TeamMember(models.Model):
             img = Image.open(self.image)
             img_format = img.format  
             
-            max_size = (800, 800)  
-            img.thumbnail(max_size)
+            img.thumbnail((800, 800), Image.LANCZOS)
 
             img_io = BytesIO()
             img.save(img_io, format=img_format, quality=95, optimize=True)
@@ -153,8 +150,7 @@ class Image_Case_Study(models.Model):
             img = Image.open(self.image)
             img_format = img.format  
             
-            max_size = (800, 800)  
-            img.thumbnail(max_size)
+            img.thumbnail((800, 800), Image.LANCZOS)
 
             img_io = BytesIO()
             img.save(img_io, format=img_format, quality=95, optimize=True)
@@ -174,8 +170,7 @@ class Image_Workshop(models.Model):
             img = Image.open(self.image)
             img_format = img.format  
             
-            max_size = (800, 800)  
-            img.thumbnail(max_size)
+            img.thumbnail((800, 800), Image.LANCZOS)
 
             img_io = BytesIO()
             img.save(img_io, format=img_format, quality=95, optimize=True)
@@ -263,8 +258,7 @@ class CaseStudyThemeImage(models.Model):
             img = Image.open(self.image)
             img_format = img.format  
             
-            max_size = (800, 800)  
-            img.thumbnail(max_size)
+            img.thumbnail((800, 800), Image.LANCZOS)
 
             img_io = BytesIO()
             img.save(img_io, format=img_format, quality=95, optimize=True)
