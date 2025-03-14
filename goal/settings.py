@@ -56,7 +56,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'goal.wsgi.application'
 
-ENVIRONMENT = os.getenv('DJANGO_ENV', 'development')
+ENVIRONMENT = config('DJANGO_ENV', default='development')
 
 if ENVIRONMENT == 'production':
     DATABASES = {
