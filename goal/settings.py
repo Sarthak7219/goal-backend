@@ -62,11 +62,11 @@ if ENVIRONMENT == 'production':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'goaldb',
-            'USER': 'goal',
-            'PASSWORD': 'Goal@123',
-            'HOST': 'localhost',
-            'PORT': '3306',
+            'NAME': config('DB_NAME', default='goaldb'),
+            'USER': config('DB_USER', default='goal'),
+            'PASSWORD': config('DB_PASSWORD', default='Goal@123'),
+            'HOST': config('DB_HOST', default='10.0.1.55'),
+            'PORT': config('DB_PORT', default='3306'),
         }
     }
 else:
