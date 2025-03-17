@@ -4,8 +4,6 @@ from .views import *
 
 urlpatterns = [
     path('', CombinedDataView.as_view(), name='combined-data'),
-    # path('casestudy_images/', ImageCaseStudyList.as_view(), name='images-casestudy'),
-    # path('workshop_images/', ImageWorkshopList.as_view(), name='images-workshop'),
     path('homepage_data/', get_homepage_data),
     path('about/', get_about_data),
     path('stories/', get_stories),

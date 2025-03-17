@@ -10,3 +10,10 @@ services:
     volumes:
       - /mnt/data/media:/mnt/data/media
     command: gunicorn goal.wsgi:application --bind 0.0.0.0:8000
+  
+  redis:
+    image: redis:latest
+    restart: always
+    command: redis-server --maxmemory 256mb --maxmemory-policy allkeys-lru
+    ports:
+      - "6379:6379"
