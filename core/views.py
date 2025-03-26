@@ -195,9 +195,10 @@ def get_theme_detail(request):
 @api_view(['POST'])
 def get_visit_photos(request):
     id = request.data.get('id')
+    page_number = request.query_params.get("page", 1)
     if not id:
         return Response({"error":"ID is required"},status=400)
-    cache_key = f"visit_photos_{id}"
+    cache_key = f"visit_photos_{id}_page_{page_number}"
     cache_data = cache.get(cache_key)
     if cache_data is not None:
         return Response(cache_data)
@@ -218,9 +219,10 @@ def get_visit_photos(request):
 @api_view(['POST'])
 def get_workshop_photos(request):
     id = request.data.get('id')
+    page_number = request.query_params.get("page", 1)
     if not id:
         return Response({"error":"ID is required"},status=400)
-    cache_key = f"workshop_photos_{id}"
+    cache_key = f"workshop_photos_{id}_page_{page_number}"
     cache_data = cache.get(cache_key)
     if cache_data is not None:
         return Response(cache_data)
