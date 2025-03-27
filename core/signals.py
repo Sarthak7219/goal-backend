@@ -86,9 +86,27 @@ def clear_themes_cache(sender, instance, **kwargs):
 @receiver(post_save, sender=Image_Case_Study)
 @receiver(post_delete, sender=Image_Case_Study)
 def clear_case_study_images_cache(sender, instance, **kwargs):
-    cache.delete(f"visit_photos_{instance.case_study.id}")
+    case_study_id = instance.case_study.id
+
+    cache_key_pages = f"visit_photos_pages_{case_study_id}"
+    cached_pages = cache.get(cache_key_pages, set())
+
+    for page in cached_pages:
+        cache_key = f"visit_photos_{case_study_id}_page_{page}"
+        cache.delete(cache_key)
+
+    cache.delete(cache_key_pages)
 
 @receiver(post_save, sender=Image_Workshop)
 @receiver(post_delete, sender=Image_Workshop)
 def clear_workshop_images_cache(sender, instance, **kwargs):
-    cache.delete(f"workshop_photos_{instance.workshop.id}")
+    case_study_id = instance.workshop.case_study.id
+   
+    cache_key_pages = f"workshop_photos_pages_{case_study_id}"
+    cached_pages = cache.get(cache_key_pages, set()) 
+
+    for page in cached_pages:
+        cache_key = f"workshop_photos_{case_study_id}_page_{page}"
+        cache.delete(cache_key)
+
+    cache.delete(cache_key_pages)

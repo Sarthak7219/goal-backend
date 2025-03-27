@@ -191,7 +191,6 @@ def get_theme_detail(request):
     except Theme.DoesNotExist:
         return Response({"error":"Theme not found"},status=404)
 
-
 @api_view(['POST'])
 def get_visit_photos(request):
     id = request.data.get('id')
@@ -205,12 +204,18 @@ def get_visit_photos(request):
     try:
         case_study = Case_study.objects.get(id=id)
         visit_photos_data = case_study.images.all().order_by('-date')
+        if not visit_photos_data.exists():  
+            return Response({"results": []}, status=200)
         paginator = PageNumberPagination()
         paginator.page_size = 8
         result_page = paginator.paginate_queryset(visit_photos_data, request)
         serializer = ImageCaseStudySerializer(result_page,many=True,context={'request':request})
         response = paginator.get_paginated_response(serializer.data)
         cache.set(cache_key, response.data, timeout=CACHE_TTL)
+        cache_key_pages = f"visit_photos_pages_{id}"
+        cached_pages = cache.get(cache_key_pages, set())
+        cached_pages.add(page_number)
+        cache.set(cache_key_pages, cached_pages, timeout=CACHE_TTL)
         return response
     except Case_study.DoesNotExist:
         return Response({"error":"Case Study not found"},status=404)
@@ -229,12 +234,18 @@ def get_workshop_photos(request):
     try:
         case_study = Case_study.objects.get(id=id)
         workshop_photos_data = Image_Workshop.objects.filter(workshop__case_study=case_study).order_by('-date')
+        if not workshop_photos_data.exists():  
+            return Response({"results": []}, status=200)
         paginator = PageNumberPagination()
         paginator.page_size = 8
         result_page = paginator.paginate_queryset(workshop_photos_data, request)
         serializer = ImageWorkshopSerializer(result_page,many=True,context={'request':request})
         response = paginator.get_paginated_response(serializer.data)
         cache.set(cache_key, response.data, timeout=CACHE_TTL)
+        cache_key_pages = f"workshop_photos_pages_{id}"
+        cached_pages = cache.get(cache_key_pages, set())
+        cached_pages.add(page_number)
+        cache.set(cache_key_pages, cached_pages, timeout=CACHE_TTL)
         return response
     except Case_study.DoesNotExist:
         return Response({"error":"Case Study not found"},status=404)
