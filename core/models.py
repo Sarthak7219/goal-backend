@@ -41,6 +41,7 @@ class Workshop(models.Model):
     title = models.CharField(max_length=1000)
     case_study = models.ForeignKey(Case_study, on_delete=models.CASCADE, null=True, blank=True, related_name='workshop')
     date = models.DateField()
+    end_date = models.DateField(null=True, blank=True)
     venue = models.CharField(max_length=500)
     description = models.TextField()
     organised_by = models.CharField(max_length=150,null=True, blank=True)
@@ -181,6 +182,7 @@ class Image_Workshop(models.Model):
 
 class Stories(models.Model):
     link = models.TextField(null=True, blank=True)
+    pdf = models.FileField(upload_to='pdfs/workshops/', null=True, blank=True)
     date=models.DateField(null=True,blank=True)
     location = models.CharField(max_length=50, null=True, blank=True)
     description = models.CharField(max_length=150, null=True, blank=True)
