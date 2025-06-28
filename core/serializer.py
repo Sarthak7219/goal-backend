@@ -24,12 +24,16 @@ class CaseStudiesSerializer(serializers.ModelSerializer):
 
 class WorkshopsSerializer(serializers.ModelSerializer):
     formatted_date = serializers.SerializerMethodField()
+    formatted_end_date = serializers.SerializerMethodField()
     thumbnail = serializers.SerializerMethodField()
     class Meta:
         model = Workshop
-        fields =  ['id', 'title', 'venue', 'formatted_date', 'thumbnail']
+        fields =  ['id', 'title', 'venue', 'formatted_date', 'formatted_end_date', 'thumbnail']
     def get_formatted_date(self, obj):
         return obj.date.strftime("%d %b %y") if obj.date else None
+    
+    def get_formatted_end_date(self, obj):
+        return obj.end_date.strftime("%d %b %y") if obj.end_date else None
     
     def get_thumbnail(self, obj):
         request = self.context.get('request')
@@ -178,14 +182,18 @@ class ImageWorkshopSerializer(serializers.ModelSerializer):
 
 class WorkshopDetailSerializer(serializers.ModelSerializer):
     formatted_date = serializers.SerializerMethodField()
+    formatted_end_date = serializers.SerializerMethodField()
     workshop_photos = serializers.SerializerMethodField()
     thumbnail = serializers.SerializerMethodField()
 
     class Meta:
         model = Workshop
-        fields = ['id', 'title','formatted_date','venue','description','organised_by','link','speakers','key_takeaways','mode', 'thumbnail', 'workshop_photos']
+        fields = ['id', 'title','formatted_date', 'formatted_end_date','venue','description','organised_by','link','speakers','key_takeaways','mode', 'thumbnail', 'workshop_photos']
     def get_formatted_date(self, obj):
         return obj.date.strftime("%d %b %y") if obj.date else None
+    
+    def get_formatted_end_date(self, obj):
+        return obj.end_date.strftime("%d %b %y") if obj.end_date else None
     
     def get_workshop_photos(self, obj):
         photos = obj.images.all()[:4]
