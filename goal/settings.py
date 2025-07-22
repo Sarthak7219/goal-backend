@@ -92,7 +92,7 @@ else:
     CACHES = {
         "default": {
             "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": "redis://:0xa0OnXMjkFmZZVqTME7RrCwYQ5AeAlx@redis-18330.c277.us-east-1-3.ec2.redns.redis-cloud.com:18330/0",
+            "LOCATION": "redis://default:bA9dgl6ZgKnxlyn5aCp4wWgC3Iw22VoY@redis-19005.c84.us-east-1-2.ec2.redns.redis-cloud.com:19005/0",
             "OPTIONS": {
                 "CLIENT_CLASS": "django_redis.client.DefaultClient",
             }
