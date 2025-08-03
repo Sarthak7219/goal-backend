@@ -110,3 +110,15 @@ def clear_workshop_images_cache(sender, instance, **kwargs):
         cache.delete(cache_key)
 
     cache.delete(cache_key_pages)
+
+@receiver(post_save, sender=CaseStudyThemeDescription)
+@receiver(post_delete, sender=CaseStudyThemeDescription)
+def clear_theme_detail_cache_on_description_change(sender, instance, **kwargs):
+    cache_key = f"theme_{instance.theme.id}"
+    cache.delete(cache_key)
+
+@receiver(post_save, sender=CaseStudyThemeImage)
+@receiver(post_delete, sender=CaseStudyThemeImage)
+def clear_theme_detail_cache_on_image_change(sender, instance, **kwargs):
+    cache_key = f"theme_{instance.theme.id}"
+    cache.delete(cache_key)

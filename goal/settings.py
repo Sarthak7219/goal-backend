@@ -56,7 +56,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'goal.wsgi.application'
 
-CACHE_TTL = 60*3000
+CACHE_TTL = 24*60*60
 ENVIRONMENT = config('DJANGO_ENV', default='development')
 
 if ENVIRONMENT == 'production':
