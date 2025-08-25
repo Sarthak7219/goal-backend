@@ -10,6 +10,7 @@ class Case_study(models.Model):
     description = models.TextField(null=True)
     country = models.CharField(max_length=50, null=True)
     thumbnail = models.ImageField(upload_to='images/case_study/thumbnails/', null=True, blank=True)
+    map_image = models.ImageField(upload_to='images/case_study/maps/', null=True, blank=True)
     def __str__(self): 
          return "Case study ("+self.study_area+")"
 
@@ -50,7 +51,8 @@ class Workshop(models.Model):
     key_takeaways = models.TextField(null=True, blank=True)
     mode = models.CharField(max_length=30, choices=MODE_CHOICES, default='offline')
     thumbnail = models.ImageField(upload_to='images/workshop/thumbnails/', null=True, blank=True)
-
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
     def __str__(self):
         return self.title[:50]
     

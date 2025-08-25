@@ -8,7 +8,9 @@ SECRET_KEY = 'django-insecure-5=%cz$sq3gm)tv7+ombr9($gr@@%tnp$t36r7r#n)a-57t%otp
 
 DEBUG = config("DEBUG", default=True)
 
-ALLOWED_HOSTS = config("ALLOWED_HOSTS_DEPLOY", default="localhost").split(",")
+# ALLOWED_HOSTS = config("ALLOWED_HOSTS_DEPLOY", default="localhost").split(",")
+
+ALLOWED_HOSTS = config("ALLOWED_HOSTS_DEPLOY", default="localhost,127.0.0.1").split(",")
 
 INSTALLED_APPS = [
     'django.contrib.admin',
