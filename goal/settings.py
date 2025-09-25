@@ -126,7 +126,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS", default="https://api.iitr-apn-goal.com").split(",")
 
-CORS_ALLOWED_ORIGINS = config("CORS_ALLOWED_ORIGINS", default="http://localhost:3000").split(",")
+CORS_ALLOWED_ORIGINS = config(
+    "CORS_ALLOWED_ORIGINS",
+    default="http://localhost:3000,https://www.iitr-apn-goal.com,https://iitr-apn-goal.com"
+).split(",")
 CORS_ALLOW_CREDENTIALS = True
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
