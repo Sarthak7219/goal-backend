@@ -147,11 +147,20 @@ class TeamMemberDetailSerializer(serializers.ModelSerializer):
 
 class ResourcesSerializer(serializers.ModelSerializer):
     formatted_date = serializers.SerializerMethodField()
+    image = serializers.SerializerMethodField()
     class Meta:
         model = Resources
-        fields = ['id', 'title','formatted_date','publisher','link','pdf', 'category']
+        fields = ['id', 'title','formatted_date','publisher','link','pdf', 'category', 'image']
     def get_formatted_date(self, obj):
         return obj.date_of_publishing.strftime("%d %b %y") if obj.date_of_publishing else None
+    def get_image(self, obj):
+        request = self.context.get('request')
+        if obj.image:
+            if request:
+                return request.build_absolute_uri(obj.image.url)
+            return obj.image.url
+        else:
+            return None
 
 class ImageCaseStudySerializer(serializers.ModelSerializer):
     formatted_date = serializers.SerializerMethodField()
@@ -193,10 +202,11 @@ class WorkshopDetailSerializer(serializers.ModelSerializer):
     formatted_end_date = serializers.SerializerMethodField()
     workshop_photos = serializers.SerializerMethodField()
     thumbnail = serializers.SerializerMethodField()
+    case_study_name = serializers.SerializerMethodField()
 
     class Meta:
         model = Workshop
-        fields = ['id', 'title','formatted_date', 'formatted_end_date','venue','description','organised_by','link','speakers','key_takeaways','mode', 'thumbnail', 'workshop_photos','latitude', 'longitude']
+        fields = ['id', 'title','formatted_date', 'formatted_end_date','venue','description','organised_by','link','speakers','key_takeaways','mode', 'thumbnail', 'workshop_photos','latitude', 'longitude', 'lead_institution', 'case_study_name', 'pdf']
     def get_formatted_date(self, obj):
         return obj.date.strftime("%d %b %y") if obj.date else None
     
@@ -217,7 +227,10 @@ class WorkshopDetailSerializer(serializers.ModelSerializer):
             return obj.thumbnail.url
         else:
             return None
-
+        
+    def get_case_study_name(self, obj):
+        return obj.get_workshop_case_study_name()
+    
 class CaseStudyDetailSerializer(serializers.ModelSerializer):
     related_workshops = serializers.SerializerMethodField()
     photos = serializers.SerializerMethodField()

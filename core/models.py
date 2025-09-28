@@ -4,6 +4,7 @@ import os
 from PIL import Image
 from io import BytesIO
 from django.core.files.base import ContentFile
+from django.utils.timezone import now
 
 class Case_study(models.Model):
     study_area = models.CharField(max_length=130)
@@ -33,7 +34,7 @@ class Case_study(models.Model):
 
 
 MODE_CHOICES = (
-    ('offline', 'Offline'),
+    ('offline', 'In Person'),
     ('online', 'Online'),
     ('hybrid','Hybrid')
 )
@@ -53,12 +54,14 @@ class Workshop(models.Model):
     thumbnail = models.ImageField(upload_to='images/workshop/thumbnails/', null=True, blank=True)
     latitude = models.FloatField(null=True, blank=True)
     longitude = models.FloatField(null=True, blank=True)
+    lead_institution = models.CharField(max_length=200,null=True, blank=True)
+    pdf = models.FileField(upload_to='pdfs/workshops/', blank=True, null=True)
     def __str__(self):
         return self.title[:50]
     
-    def get_workshop_case_study(self):
-        case_study = self.case_study
-        return case_study
+    def get_workshop_case_study_name(self):
+        case_study_name = self.case_study.study_area
+        return case_study_name if case_study_name else ""
 
     def get_all_related_workshops(self):
         case_study = self.case_study
@@ -74,31 +77,49 @@ class Workshop(models.Model):
 
             img_io = BytesIO()
             img.save(img_io, format=img_format, quality=95, optimize=True)
-            self.thumbnail = ContentFile(img_io.getvalue(), name=self.thumbnail.name)
+
+            filename = os.path.basename(self.thumbnail.name)
+            self.thumbnail.save(filename, ContentFile(img_io.getvalue()), save=False)
         super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        if self.pdf:
+            if os.path.isfile(self.pdf.path):
+                os.remove(self.pdf.path)
+        super().delete(*args, **kwargs)
     
-
-# class Image(models.Model):
-#     case_study = models.ForeignKey(Case_study, on_delete=models.CASCADE, null=True, blank=True, related_name='workshop')
-
-
 RESOURCES_CHOICES = (
     ('publication', 'Publication'),
     ('training_tool', 'Training Tool'),
-    ('training_tool', 'Training Tool')
+    ('flashcard', 'Flashcard'),
+    ('map', 'Map')
 )
 
 class Resources(models.Model):
-    title = models.CharField(max_length=25)
+    title = models.CharField(max_length=50)
     category = models.CharField(max_length=30, choices=RESOURCES_CHOICES, default='publication')
-    date_of_publishing = models.DateField()
-    publisher = models.CharField(max_length=25)
+    date_of_publishing = models.DateField(verbose_name="Date")
+    publisher = models.CharField(max_length=25, verbose_name="Publisher/Source")
     link = models.URLField(max_length=250, null=True, blank=True)
     pdf = models.FileField(upload_to='pdfs/resources/', blank=True, null=True)
-    
+    image = models.ImageField(upload_to='images/resource/',  blank=True, null=True)
+
+    def clean(self):
+        if self.category == "flashcard" or self.category == "map":
+            if not self.image:
+                raise ValidationError("Flashcard/Map must have an image")
+            if self.pdf or self.link:
+                raise ValidationError("Flashcard/Map only supports image. For link/pdf please select other category")
+        else:
+            if self.image:
+                raise ValidationError("Resource only supports pdf/link. For image please select Flashcard or Map")
+
+    def save(self, *args, **kwargs):
+        self.clean()
+        super().save(*args, **kwargs)
 
     def __str__(self): 
-         return self.category
+         return f"{self.category} - {self.title}"
     def delete(self, *args, **kwargs):
         if self.pdf:
             if os.path.isfile(self.pdf.path):
@@ -107,10 +128,11 @@ class Resources(models.Model):
 
 TEAM_MEMBER_CHOICES = (
     ('collaborator', 'Collaborator'),
-    ('research_associate', 'Research_Associate'),
-    ('community_trainer', 'Community_Trainer'),
+    ('research_associate', 'Research Associate'),
+    ('community_trainer', 'Community Knowledge Partner'),
     ('intern', 'Intern'),
-    ('student', 'Students'),
+    ('student', 'Classroom Integration Partner'),
+    ('icimod_huc_partners', 'HUC-ICIMOD Partner'),
 )
 
 class TeamMember(models.Model):
@@ -145,7 +167,7 @@ class TeamMember(models.Model):
 class Image_Case_Study(models.Model):
     case_study=models.ForeignKey(Case_study,on_delete=models.CASCADE,related_name='images',blank=True,null=True)
     image=models.ImageField(upload_to='images/case_study/',default=True)
-    caption=models.TextField(max_length=30,blank=True,null=True)
+    caption=models.TextField(max_length=50,blank=True,null=True)
     date=models.DateField(null=True,blank=True)
 
     def save(self, *args, **kwargs):
@@ -165,7 +187,7 @@ class Image_Case_Study(models.Model):
 class Image_Workshop(models.Model):
     workshop=models.ForeignKey(Workshop,on_delete=models.CASCADE,related_name='images',blank=True,null=True)
     image=models.ImageField(upload_to='images/workshop/',default=True)
-    caption=models.TextField(max_length=30,blank=True,null=True)
+    caption=models.TextField(max_length=50,blank=True,null=True)
     date=models.DateField(null=True,blank=True)
 
     def save(self, *args, **kwargs):
@@ -251,7 +273,7 @@ class CaseStudyThemeImage(models.Model):
     case_study = models.ForeignKey(Case_study, on_delete=models.CASCADE, related_name='case_study_themes_image')
     theme = models.ForeignKey(Theme, on_delete=models.CASCADE, related_name='case_study_themes_image')
     image=models.ImageField(upload_to='images/theme/',default=True)
-    caption=models.TextField(max_length=30,blank=True,null=True)
+    caption=models.TextField(max_length=50,blank=True,null=True)
     date=models.DateField(null=True,blank=True)
 
     def __str__(self):
