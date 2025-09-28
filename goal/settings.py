@@ -128,7 +128,7 @@ CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS", default="https://api.iitr-
 
 CORS_ALLOWED_ORIGINS = config(
     "CORS_ALLOWED_ORIGINS",
-    default="http://localhost:3000,https://www.iitr-apn-goal.com,https://iitr-apn-goal.com"
+    default="http://localhost:3000,https://iitr-apn-goal.com"
 ).split(",")
 CORS_ALLOW_CREDENTIALS = True
 
