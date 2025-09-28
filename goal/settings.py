@@ -8,7 +8,9 @@ SECRET_KEY = 'django-insecure-5=%cz$sq3gm)tv7+ombr9($gr@@%tnp$t36r7r#n)a-57t%otp
 
 DEBUG = config("DEBUG", default=True)
 
-ALLOWED_HOSTS = config("ALLOWED_HOSTS_DEPLOY", default="localhost").split(",")
+# ALLOWED_HOSTS = config("ALLOWED_HOSTS_DEPLOY", default="localhost").split(",")
+
+ALLOWED_HOSTS = config("ALLOWED_HOSTS_DEPLOY", default="localhost,127.0.0.1").split(",")
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -124,7 +126,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS", default="https://api.iitr-apn-goal.com").split(",")
 
-CORS_ALLOWED_ORIGINS = config("CORS_ALLOWED_ORIGINS", default="http://localhost:3000").split(",")
+CORS_ALLOWED_ORIGINS = config(
+    "CORS_ALLOWED_ORIGINS",
+    default="http://localhost:3000,https://www.iitr-apn-goal.com"
+).split(",")
 CORS_ALLOW_CREDENTIALS = True
 
 X_FRAME_OPTIONS = "SAMEORIGIN"

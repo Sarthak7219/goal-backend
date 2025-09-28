@@ -155,7 +155,7 @@ def get_resources(request):
         return Response(cache_data)
     resources = Resources.objects.all()
     grouped_data = defaultdict(list)
-    serializer = ResourcesSerializer(resources, many=True)
+    serializer = ResourcesSerializer(resources, many=True, context={'request':request})
     for resource in serializer.data:
         grouped_data[resource["category"]].append(resource)
     cache.set(cache_key, grouped_data, timeout=CACHE_TTL)

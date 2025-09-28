@@ -12,13 +12,21 @@ class CaseStudiesSerializer(serializers.ModelSerializer):
     thumbnail = serializers.SerializerMethodField()
     class Meta:
         model = Case_study
-        fields =  ['id', 'country', 'study_area', 'thumbnail']
+        fields =  ['id', 'country', 'study_area', 'thumbnail','map_image']
     def get_thumbnail(self, obj):
         request = self.context.get('request')
         if obj.thumbnail:
             if request:
                 return request.build_absolute_uri(obj.thumbnail.url)
             return obj.thumbnail.url
+        else:
+            return None
+    def get_map_image(self, obj):  # Add this method
+        request = self.context.get('request')
+        if obj.map_image:
+            if request:
+                return request.build_absolute_uri(obj.map_image.url)
+            return obj.map_image.url
         else:
             return None
 
@@ -28,7 +36,7 @@ class WorkshopsSerializer(serializers.ModelSerializer):
     thumbnail = serializers.SerializerMethodField()
     class Meta:
         model = Workshop
-        fields =  ['id', 'title', 'venue', 'formatted_date', 'formatted_end_date', 'thumbnail']
+        fields =  ['id', 'title', 'venue', 'formatted_date', 'formatted_end_date', 'thumbnail','latitude', 'longitude']
     def get_formatted_date(self, obj):
         return obj.date.strftime("%d %b %y") if obj.date else None
     
@@ -139,11 +147,20 @@ class TeamMemberDetailSerializer(serializers.ModelSerializer):
 
 class ResourcesSerializer(serializers.ModelSerializer):
     formatted_date = serializers.SerializerMethodField()
+    image = serializers.SerializerMethodField()
     class Meta:
         model = Resources
-        fields = ['id', 'title','formatted_date','publisher','link','pdf', 'category']
+        fields = ['id', 'title','formatted_date','publisher','link','pdf', 'category', 'image']
     def get_formatted_date(self, obj):
         return obj.date_of_publishing.strftime("%d %b %y") if obj.date_of_publishing else None
+    def get_image(self, obj):
+        request = self.context.get('request')
+        if obj.image:
+            if request:
+                return request.build_absolute_uri(obj.image.url)
+            return obj.image.url
+        else:
+            return None
 
 class ImageCaseStudySerializer(serializers.ModelSerializer):
     formatted_date = serializers.SerializerMethodField()
@@ -185,10 +202,11 @@ class WorkshopDetailSerializer(serializers.ModelSerializer):
     formatted_end_date = serializers.SerializerMethodField()
     workshop_photos = serializers.SerializerMethodField()
     thumbnail = serializers.SerializerMethodField()
+    case_study_name = serializers.SerializerMethodField()
 
     class Meta:
         model = Workshop
-        fields = ['id', 'title','formatted_date', 'formatted_end_date','venue','description','organised_by','link','speakers','key_takeaways','mode', 'thumbnail', 'workshop_photos']
+        fields = ['id', 'title','formatted_date', 'formatted_end_date','venue','description','organised_by','link','speakers','key_takeaways','mode', 'thumbnail', 'workshop_photos','latitude', 'longitude', 'lead_institution', 'case_study_name', 'pdf']
     def get_formatted_date(self, obj):
         return obj.date.strftime("%d %b %y") if obj.date else None
     
@@ -209,15 +227,25 @@ class WorkshopDetailSerializer(serializers.ModelSerializer):
             return obj.thumbnail.url
         else:
             return None
-
+        
+    def get_case_study_name(self, obj):
+        return obj.get_workshop_case_study_name()
+    
 class CaseStudyDetailSerializer(serializers.ModelSerializer):
     related_workshops = serializers.SerializerMethodField()
     photos = serializers.SerializerMethodField()
 
     class Meta:
         model = Case_study
-        fields = ['id', 'country', 'study_area', 'description','related_workshops', 'photos']
-
+        fields = ['id', 'country', 'study_area', 'description','related_workshops', 'photos','map_image']
+    def get_map_image(self, obj):  # Add this method
+        request = self.context.get('request')
+        if obj.map_image:
+            if request:
+                return request.build_absolute_uri(obj.map_image.url)
+            return obj.map_image.url
+        else:
+            return None
     def get_related_workshops(self, obj):
         workshops = obj.get_all_workshops()
         request = self.context.get('request')
